@@ -37,8 +37,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 0;
-  padding: 2px 0;
+  gap: 6px;
+  padding: 10px 0;
+}
+
+.cms-mobile-arrow-text {
+  font-size: 0.65rem;
+  color: var(--color-gold);
+  white-space: nowrap;
+  user-select: none;
 }
 
 .cms-mobile-arrow {
@@ -114,6 +121,6 @@
 }
 
 @media (max-width: 767px) {
-  .cms-mobile-editor { display: flex; margin: 10px 0; }
+  .cms-mobile-editor { display: flex; }
   .cms-mobile-editor:not(.open) { display: none; }
 }
