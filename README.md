@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# Broughton Web Development
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A marketing landing page for a small-business web presence service serving Brevard, NC and the surrounding WNC area.
 
-Currently, two official plugins are available:
+Built with **React + TypeScript + Vite**. No external UI libraries or Tailwind — custom CSS with CSS custom properties for theming.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Live CMS demo** — Interactive side-by-side CMS and website preview. Click any preview element to focus the corresponding input. Presets for 8 business types (cafe, restaurant, bike shop, mechanic, barber, bakery, lawn care, pet grooming). Live preview updates as you type.
+- **Dark mode** — Theme toggle with light/dark color schemes.
+- **Mobile responsive** — Fully responsive down to phone-sized viewports.
+- **Multi-page** — Home, Work, About, Contact pages with React Router.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sections
 
-## Expanding the Oxlint configuration
+- Hero with town cycler animation
+- Problem section — visual cards with SVG icons
+- Services — service category cards
+- CMS demo — live content editor with presets
+- Testimonials
+- Process steps (Talk → Build → Launch)
+- FAQ accordion
+- CTA / Contact
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Usage
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # development server
+npm run build    # production build to dist/
+npm run preview  # preview production build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Deployment
+
+Deployed via GitHub Pages. Push to `main` triggers the build action.
+
+**GitHub:** https://github.com/jacoblbagent/broughton-web-development
