@@ -1,5 +1,7 @@
 # Broughton Web Development
 
+**🌐 [jacoblbagent.github.io/broughton-web-development](https://jacoblbagent.github.io/broughton-web-development/)**
+
 A marketing landing page for a small-business web presence service serving Brevard, NC and the surrounding WNC area.
 
 Built with **React + TypeScript + Vite**. No external UI libraries or Tailwind — custom CSS with CSS custom properties for theming.
