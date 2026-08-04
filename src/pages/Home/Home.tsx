@@ -548,7 +548,7 @@ export default function Home() {
   const [businessSpinning, setBusinessSpinning] = useState(false);
   const [problemQuoteIdx, setProblemQuoteIdx] = useState(0);
   const [problemQuoteFading, setProblemQuoteFading] = useState(false);
-  const [wireframeIndices, setWireframeIndices] = useState<number[]>([0, 1, 2]);
+  const [centerIdx, setCenterIdx] = useState(0);
   const [wireframeFading, setWireframeFading] = useState(false);
 
   const headlineRef = useRef<HTMLInputElement>(null);
@@ -581,12 +581,10 @@ export default function Home() {
     const timer = setInterval(() => {
       setWireframeFading(true);
       setTimeout(() => {
-        const pool = [...Array(wireframes.length).keys()];
-        const shuffled = pool.sort(() => Math.random() - 0.5);
-        setWireframeIndices(shuffled.slice(0, 3));
+        setCenterIdx((i) => (i + 1) % wireframes.length);
         setWireframeFading(false);
       }, 300);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -795,34 +793,32 @@ export default function Home() {
           website layouts I create.
         </p>
         <div className="wireframe-showcase">
-          {wireframeIndices.map((idx, i) => {
-            const w = wireframes[idx];
-            const Frame = w.render;
-            // Deterministic seed from the 3 indices so position is stable during the cycle
-            const seed = wireframeIndices[0] * 37 + wireframeIndices[1] * 13 + wireframeIndices[2] * 7 + i * 31;
-            const r = (n: number) => ((seed * (i + 1) * 13 + n * 7) % 200 - 100) / 100;
-            const o = {
-              x: Math.round(r(1) * 60),
-              y: Math.round(r(2) * 60 - 20),
-              r: +(r(3) * 3).toFixed(1),
-              z: i + 1,
-            };
-            return (
-              <div
-                key={`${idx}-${i}`}
-                className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
-                style={{
-                  zIndex: o.z,
-                  top: `50%`,
-                  transform: `translate(calc(-50% + ${o.x}px), calc(-50% + ${o.y}px)) rotate(${o.r}deg)`,
-                }}
-              >
-                <div className="wireframe-frame">
-                  <Frame />
+          {(() => {
+            const N = wireframes.length;
+            const slots = [
+              { offset: (centerIdx - 1 + N) % N, x: -80, r: -5, z: 1 },
+              { offset: centerIdx, x: 0, r: 0, z: 3 },
+              { offset: (centerIdx + 1) % N, x: 80, r: 5, z: 2 },
+            ];
+            return slots.map((slot) => {
+              const w = wireframes[slot.offset];
+              const Frame = w.render;
+              return (
+                <div
+                  key={slot.offset}
+                  className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
+                  style={{
+                    zIndex: slot.z,
+                    transform: `translateX(calc(-50% + ${slot.x}px)) translateY(-50%) rotate(${slot.r}deg)`,
+                  }}
+                >
+                  <div className="wireframe-frame">
+                    <Frame />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            });
+          })()}
         </div>
       </Section>
 
