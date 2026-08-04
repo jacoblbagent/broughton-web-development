@@ -547,14 +547,12 @@ export default function Home() {
                     rows={3}
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
-                    autoFocus
                   />
                 ) : (
                   <input
                     className="cms-mobile-input"
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
-                    autoFocus
                   />
                 )}
                 <div className="cms-mobile-actions">
