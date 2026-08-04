@@ -202,6 +202,7 @@ export default function Home() {
   const hoursRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
+  const scrollPosRef = useRef(0);
 
   const presets: Record<string, {
     headline: string; tagline: string; cta: string; about: string; hours: string; phone: string; brand: string; url: string
@@ -302,6 +303,7 @@ export default function Home() {
 
   function openMobileEditor(field: string, value: string) {
     if (window.innerWidth >= 768) return;
+    scrollPosRef.current = window.scrollY;
     setMobileEditField(field);
     setMobileEditValue(value);
   }
@@ -549,12 +551,14 @@ export default function Home() {
                     rows={3}
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
+                    onFocus={() => window.scrollTo(0, scrollPosRef.current)}
                   />
                 ) : (
                   <input
                     className="cms-mobile-input"
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
+                    onFocus={() => window.scrollTo(0, scrollPosRef.current)}
                   />
                 )}
                 <div className="cms-mobile-actions">
