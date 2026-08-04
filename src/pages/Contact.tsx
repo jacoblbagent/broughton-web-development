@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function Contact() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -62,20 +60,6 @@ export default function Contact() {
           </div>
         </form>
 
-        <p className="contact-or">or send an email directly</p>
-
-        <a
-          href="mailto:jacobbroughtondev@gmail.com"
-          className="btn btn-ghost contact-email-link"
-        >
-          jacobbroughtondev@gmail.com
-        </a>
-
-        <div className="contact-cta">
-          <Link to="/" className="btn btn-ghost">
-            &larr; Back to home
-          </Link>
-        </div>
       </section>
     </main>
   );
