@@ -50,26 +50,35 @@ function CafeWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      <rect x="12" y="10" width="40" height="4" rx="2" fill={accent} />
-      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="12" y="28" width="296" height="72" rx="3" fill={warmTint} />
-      <rect x="20" y="36" width="90" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="20" y="48" width="60" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="20" y="80" width="70" height="10" rx="3" fill={accentMuted} />
-      <rect x="12" y="112" width="96" height="60" rx="3" fill={accentDim} />
-      <rect x="112" y="112" width="96" height="60" rx="3" fill={accentDim} />
-      <rect x="212" y="112" width="96" height="60" rx="3" fill={accentDim} />
-      <rect x="20" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="20" y="148" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="120" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="120" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="120" y="148" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="220" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="220" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="220" y="148" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="12" y="183" width="296" height="2" rx="1" fill="var(--color-border)" />
+      {/* Nav bar */}
+      <rect width="320" height="20" fill={accent} opacity="0.9" />
+      <rect x="12" y="6" width="36" height="8" rx="3" fill="var(--color-bg)" opacity="0.9" />
+      <circle cx="260" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
+      <circle cx="278" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
+      <circle cx="296" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
+      {/* Hero */}
+      <rect x="0" y="20" width="320" height="76" fill={warmTint} />
+      <rect x="40" y="36" width="100" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="50" y="48" width="80" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
+      <rect x="70" y="72" width="60" height="10" rx="3" fill={accentMuted} />
+      {/* Menu cards */}
+      <rect x="10" y="104" width="96" height="74" rx="3" fill={accentDim} />
+      <rect x="14" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="14" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="14" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="14" y="166" width="40" height="6" rx="2" fill={accentMuted} />
+      <rect x="112" y="104" width="96" height="74" rx="3" fill={accentDim} />
+      <rect x="116" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="116" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="116" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="116" y="166" width="40" height="6" rx="2" fill={accentMuted} />
+      <rect x="214" y="104" width="96" height="74" rx="3" fill={accentDim} />
+      <rect x="218" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="218" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="218" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="218" y="166" width="40" height="6" rx="2" fill={accentMuted} />
+      {/* Footer */}
+      <rect width="320" height="8" y="192" fill={accent} opacity="0.7" />
     </svg>
   );
 }
@@ -78,26 +87,36 @@ function ServiceWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      <rect x="12" y="10" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="230" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="266" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="12" y="28" width="296" height="58" rx="3" fill={blueTint} />
-      <rect x="20" y="38" width="100" height="5" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="48" width="70" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="220" y="64" width="80" height="12" rx="3" fill={accentMuted} />
-      <rect x="12" y="98" width="146" height="38" rx="3" fill={accentDim} />
-      <rect x="162" y="98" width="146" height="38" rx="3" fill={accentDim} />
-      <rect x="12" y="142" width="146" height="38" rx="3" fill={accentDim} />
-      <rect x="162" y="142" width="146" height="38" rx="3" fill={accentDim} />
-      <rect x="20" y="108" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="116" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="170" y="108" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="170" y="116" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="20" y="152" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="160" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="170" y="152" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="170" y="160" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="12" y="190" width="296" height="2" rx="1" fill="var(--color-border)" />
+      {/* Nav */}
+      <rect x="0" y="0" width="320" height="18" fill="var(--color-bg)" />
+      <rect x="12" y="4" width="30" height="7" rx="2" fill={accent} />
+      <rect x="230" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="258" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="286" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      {/* Hero */}
+      <rect x="0" y="18" width="320" height="62" fill={blueTint} />
+      <rect x="40" y="30" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="30" y="42" width="100" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
+      <rect x="50" y="58" width="60" height="10" rx="3" fill={accentMuted} />
+      {/* Feature cards */}
+      <rect x="10" y="88" width="96" height="50" rx="3" fill={accentDim} />
+      <circle cx="58" cy="100" r="8" fill={accentMuted} />
+      <rect x="22" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="18" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
+      <rect x="112" y="88" width="96" height="50" rx="3" fill={accentDim} />
+      <circle cx="160" cy="100" r="8" fill={accentMuted} />
+      <rect x="124" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="120" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
+      <rect x="214" y="88" width="96" height="50" rx="3" fill={accentDim} />
+      <circle cx="262" cy="100" r="8" fill={accentMuted} />
+      <rect x="226" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="222" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
+      {/* CTA banner */}
+      <rect x="0" y="146" width="320" height="38" fill={accentDim} />
+      <rect x="90" y="160" width="50" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="180" y="158" width="50" height="10" rx="3" fill={accentMuted} />
+      {/* Footer */}
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.4" />
     </svg>
   );
 }
@@ -106,86 +125,32 @@ function RetailWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      <rect x="12" y="10" width="45" height="4" rx="2" fill={accent} />
-      <rect x="100" y="10" width="80" height="6" rx="3" fill="var(--color-border)" />
-      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="12" y="30" width="94" height="120" rx="3" fill={accentDim} />
-      <rect x="113" y="30" width="94" height="120" rx="3" fill={accentDim} />
-      <rect x="214" y="30" width="94" height="120" rx="3" fill={accentDim} />
-      <rect x="22" y="40" width="74" height="60" rx="3" fill={greenTint} />
-      <rect x="123" y="40" width="74" height="60" rx="3" fill={warmTint} />
-      <rect x="224" y="40" width="74" height="60" rx="3" fill={blueTint} />
-      <rect x="22" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="22" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="22" y="130" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="123" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="123" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="123" y="130" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="224" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="224" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="224" y="130" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="12" y="160" width="296" height="30" rx="3" fill={accentDim} />
-      <rect x="100" y="171" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="12" y="192" width="296" height="2" rx="1" fill="var(--color-border)" />
-    </svg>
-  );
-}
-
-function MobileCafeWireframe() {
-  return (
-    <svg viewBox="0 0 140 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="140" height="280" rx="6" fill="var(--color-surface)" />
-      <rect x="10" y="12" width="20" height="6" rx="1.5" fill={accent} />
-      <rect x="110" y="12" width="16" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="10" y="30" width="120" height="80" rx="3" fill={warmTint} />
-      <rect x="18" y="42" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="52" width="36" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="10" y="120" width="120" height="38" rx="3" fill={accentDim} />
-      <rect x="18" y="126" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="134" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="18" y="144" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="10" y="166" width="120" height="38" rx="3" fill={accentDim} />
-      <rect x="18" y="172" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="180" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="18" y="190" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="10" y="212" width="120" height="38" rx="3" fill={accentDim} />
-      <rect x="18" y="218" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="226" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="18" y="236" width="50" height="6" rx="2" fill={accentMuted} />
-      <rect x="10" y="260" width="120" height="2" rx="1" fill="var(--color-border)" />
-      <rect x="25" y="268" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="50" y="268" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="78" y="268" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="105" y="268" width="12" height="4" rx="1.5" fill={accent} />
-    </svg>
-  );
-}
-
-function MobileServiceWireframe() {
-  return (
-    <svg viewBox="0 0 140 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="140" height="280" rx="6" fill="var(--color-surface)" />
-      <rect x="10" y="12" width="20" height="6" rx="1.5" fill="var(--color-text-secondary)" />
-      <rect x="100" y="10" width="28" height="10" rx="3" fill={accentMuted} />
-      <rect x="10" y="30" width="120" height="60" rx="3" fill={blueTint} />
-      <rect x="20" y="42" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="52" width="80" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="10" y="100" width="120" height="30" rx="3" fill={accentDim} />
-      <rect x="18" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="116" width="80" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="10" y="138" width="120" height="30" rx="3" fill={accentDim} />
-      <rect x="18" y="146" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="154" width="80" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="10" y="176" width="120" height="30" rx="3" fill={accentDim} />
-      <rect x="18" y="184" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="18" y="192" width="80" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="30" y="220" width="80" height="14" rx="4" fill={accentMuted} />
-      <rect x="10" y="248" width="120" height="2" rx="1" fill="var(--color-border)" />
-      <rect x="25" y="256" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="50" y="256" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="78" y="256" width="12" height="4" rx="1.5" fill={accent} />
-      <rect x="105" y="256" width="12" height="4" rx="1.5" fill={accent} />
+      {/* Nav */}
+      <rect x="0" y="0" width="320" height="20" fill={accent} opacity="0.85" />
+      <rect x="12" y="6" width="28" height="6" rx="2" fill="var(--color-bg)" opacity="0.9" />
+      <rect x="100" y="6" width="80" height="6" rx="3" fill="var(--color-bg)" opacity="0.3" />
+      <rect x="284" y="5" width="10" height="10" rx="2" fill="var(--color-bg)" opacity="0.6" />
+      {/* Product grid */}
+      <rect x="8" y="28" width="98" height="120" rx="3" fill={accentDim} />
+      <rect x="14" y="34" width="86" height="60" rx="3" fill={greenTint} />
+      <rect x="14" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="14" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="14" y="118" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="14" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
+      <rect x="111" y="28" width="98" height="120" rx="3" fill={accentDim} />
+      <rect x="117" y="34" width="86" height="60" rx="3" fill={warmTint} />
+      <rect x="117" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="117" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="117" y="118" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="117" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
+      <rect x="214" y="28" width="98" height="120" rx="3" fill={accentDim} />
+      <rect x="220" y="34" width="86" height="60" rx="3" fill={blueTint} />
+      <rect x="220" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="220" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="220" y="118" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="220" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
+      {/* Footer */}
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
     </svg>
   );
 }
@@ -194,42 +159,153 @@ function EventWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      <rect x="12" y="10" width="50" height="4" rx="2" fill={purpleTint} />
-      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
-      <rect x="12" y="26" width="296" height="48" rx="3" fill={purpleTint} />
-      <rect x="100" y="38" width="120" height="5" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="110" y="48" width="90" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="12" y="86" width="94" height="80" rx="3" fill={accentDim} />
-      <rect x="113" y="86" width="94" height="80" rx="3" fill={accentDim} />
-      <rect x="214" y="86" width="94" height="80" rx="3" fill={accentDim} />
-      <rect x="20" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="20" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="20" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="20" y="140" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="121" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="121" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="121" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="121" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="121" y="140" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="222" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="222" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="222" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
-      <rect x="222" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="222" y="140" width="60" height="6" rx="2" fill={accentMuted} />
-      <rect x="12" y="178" width="296" height="2" rx="1" fill="var(--color-border)" />
+      {/* Nav */}
+      <rect x="0" y="0" width="320" height="18" fill={purpleTint} opacity="0.5" />
+      <rect x="12" y="5" width="40" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="230" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="258" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="286" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      {/* Hero */}
+      <rect x="0" y="18" width="320" height="56" fill={purpleTint} />
+      <rect x="30" y="28" width="100" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="30" y="38" width="140" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
+      <rect x="30" y="56" width="50" height="8" rx="2" fill={accentMuted} />
+      <rect x="240" y="26" width="20" height="20" rx="3" fill={accentMuted} opacity="0.6" />
+      {/* Event cards */}
+      <rect x="10" y="82" width="96" height="84" rx="3" fill={accentDim} />
+      <rect x="18" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="18" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="18" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="18" y="130" width="80" height="6" rx="2" fill={accentMuted} />
+      <rect x="112" y="82" width="96" height="84" rx="3" fill={accentDim} />
+      <rect x="120" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="120" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="120" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="120" y="130" width="80" height="6" rx="2" fill={accentMuted} />
+      <rect x="214" y="82" width="96" height="84" rx="3" fill={accentDim} />
+      <rect x="222" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="222" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="222" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="222" y="130" width="80" height="6" rx="2" fill={accentMuted} />
+      {/* Footer */}
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
+    </svg>
+  );
+}
+
+function DashboardWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      {/* Sidebar */}
+      <rect x="0" y="0" width="30" height="200" fill={accent} opacity="0.8" />
+      <circle cx="15" cy="18" r="4" fill="var(--color-bg)" opacity="0.3" />
+      <rect x="8" y="40" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
+      <rect x="8" y="64" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
+      <rect x="8" y="88" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
+      <rect x="8" y="112" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
+      <rect x="8" y="136" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
+      {/* Header bar */}
+      <rect x="30" y="0" width="290" height="22" fill="var(--color-bg)" />
+      <rect x="40" y="7" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="220" y="6" width="30" height="8" rx="3" fill="var(--color-border)" />
+      <circle cx="270" cy="10" r="5" fill={accentMuted} />
+      <rect x="282" y="7" width="26" height="6" rx="2" fill="var(--color-border)" />
+      {/* Stat cards */}
+      <rect x="38" y="30" width="66" height="40" rx="3" fill={accentDim} />
+      <rect x="44" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="44" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="110" y="30" width="66" height="40" rx="3" fill={greenTint} />
+      <rect x="116" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="116" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="182" y="30" width="66" height="40" rx="3" fill={warmTint} />
+      <rect x="188" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="188" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="254" y="30" width="62" height="40" rx="3" fill={blueTint} />
+      <rect x="260" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="260" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      {/* Table */}
+      <rect x="38" y="80" width="274" height="100" rx="3" fill={accentDim} />
+      {/* Table header */}
+      <rect x="42" y="84" width="266" height="14" rx="2" fill={accentMuted} />
+      <rect x="50" y="88" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="100" y="88" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="160" y="88" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="240" y="88" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      {/* Table rows */}
+      <rect x="50" y="106" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="106" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="106" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="106" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="50" y="120" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="120" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="120" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="50" y="134" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="134" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="134" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="134" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="50" y="148" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="148" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="148" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="50" y="162" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="162" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="162" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="162" width="30" height="4" rx="2" fill={accentMuted} />
+    </svg>
+  );
+}
+
+function BlogWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      {/* Header */}
+      <rect x="0" y="0" width="320" height="20" fill="var(--color-bg)" />
+      <rect x="12" y="6" width="30" height="6" rx="2" fill={accent} />
+      <rect x="220" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="248" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="276" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="304" y="5" width="10" height="10" rx="2" fill="var(--color-border)" />
+      {/* Featured post */}
+      <rect x="0" y="20" width="220" height="80" rx="0" fill={blueTint} />
+      <rect x="14" y="28" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="14" y="40" width="50" height="3" rx="1.5" fill="var(--color-border)" opacity="0.5" />
+      <rect x="14" y="60" width="120" height="5" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="14" y="70" width="90" height="3" rx="1.5" fill="var(--color-border)" opacity="0.4" />
+      {/* Sidebar */}
+      <rect x="228" y="20" width="92" height="80" rx="3" fill={accentDim} />
+      <rect x="236" y="28" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="236" y="40" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="236" y="50" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="236" y="60" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="236" y="70" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="236" y="80" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      {/* Post card row */}
+      <rect x="8" y="108" width="150" height="64" rx="3" fill={accentDim} />
+      <rect x="14" y="114" width="138" height="30" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
+      <rect x="14" y="150" width="60" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="14" y="158" width="40" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="14" y="166" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="164" y="108" width="148" height="64" rx="3" fill={accentDim} />
+      <rect x="170" y="114" width="136" height="30" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
+      <rect x="170" y="150" width="60" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="170" y="158" width="40" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="170" y="166" width="30" height="4" rx="2" fill={accentMuted} />
+      {/* Footer */}
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
     </svg>
   );
 }
 
 const wireframes = [
-  { id: "cafe", business: "Ridgeview Bistro", type: "desktop" as const, render: CafeWireframe },
-  { id: "service", business: "Pisgah Home Services", type: "desktop" as const, render: ServiceWireframe },
-  { id: "retail", business: "Brevard Provisions Co.", type: "desktop" as const, render: RetailWireframe },
-  { id: "event", business: "Transylvania Arts Guild", type: "desktop" as const, render: EventWireframe },
-  { id: "mobile-cafe", business: "Riverwalk Cafe", type: "mobile" as const, render: MobileCafeWireframe },
-  { id: "mobile-service", business: "Appalachian Repair", type: "mobile" as const, render: MobileServiceWireframe },
+  { id: "cafe", render: CafeWireframe },
+  { id: "service", render: ServiceWireframe },
+  { id: "retail", render: RetailWireframe },
+  { id: "event", render: EventWireframe },
+  { id: "dashboard", render: DashboardWireframe },
+  { id: "blog", render: BlogWireframe },
 ];
 
 const businessNames = [
@@ -646,7 +722,7 @@ export default function Home() {
               <div
                 className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
               >
-                <div className={`wireframe-frame wireframe--${w.type}`}>
+                <div className="wireframe-frame">
                   <Frame />
                 </div>
               </div>

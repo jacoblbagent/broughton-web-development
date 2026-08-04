@@ -112,11 +112,6 @@
   flex-shrink: 0;
 }
 
-.wireframe--mobile {
-  max-width: 120px;
-  margin: 0 auto;
-}
-
 /* === Which businesses? === */
 .business-toolbar {
   display: flex;
