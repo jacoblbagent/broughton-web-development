@@ -798,20 +798,23 @@ export default function Home() {
           {wireframeIndices.map((idx, i) => {
             const w = wireframes[idx];
             const Frame = w.render;
-            const offsets = [
-              { x: -10, y: -6, r: -2, z: 3 },
-              { x: 10, y: 6, r: 2, z: 2 },
-              { x: -4, y: -10, r: -0.5, z: 1 },
-            ];
-            const o = offsets[i % offsets.length];
+            // Deterministic seed from the 3 indices so position is stable during the cycle
+            const seed = wireframeIndices[0] * 37 + wireframeIndices[1] * 13 + wireframeIndices[2] * 7 + i * 31;
+            const r = (n: number) => ((seed * (i + 1) * 13 + n * 7) % 200 - 100) / 100;
+            const o = {
+              x: Math.round(r(1) * 60),
+              y: Math.round(r(2) * 60 - 20),
+              r: +(r(3) * 3).toFixed(1),
+              z: i + 1,
+            };
             return (
               <div
                 key={`${idx}-${i}`}
                 className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
                 style={{
                   zIndex: o.z,
-                  top: `${o.y}px`,
-                  transform: `translateX(calc(-50% + ${o.x}px)) rotate(${o.r}deg)`,
+                  top: `50%`,
+                  transform: `translate(calc(-50% + ${o.x}px), calc(-50% + ${o.y}px)) rotate(${o.r}deg)`,
                 }}
               >
                 <div className="wireframe-frame">
