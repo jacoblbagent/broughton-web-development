@@ -798,16 +798,20 @@ export default function Home() {
           {wireframeIndices.map((idx, i) => {
             const w = wireframes[idx];
             const Frame = w.render;
-            const offset = i === 0 ? -8 : i === 1 ? 8 : 0;
-            const rotate = i === 0 ? -2 : i === 1 ? 1.5 : -0.5;
-            const zOffset = i === 0 ? 2 : i === 1 ? 1 : 0;
+            const offsets = [
+              { x: -10, y: -6, r: -2, z: 3 },
+              { x: 10, y: 6, r: 2, z: 2 },
+              { x: -4, y: -10, r: -0.5, z: 1 },
+            ];
+            const o = offsets[i % offsets.length];
             return (
               <div
                 key={`${idx}-${i}`}
                 className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
                 style={{
-                  zIndex: zOffset,
-                  transform: `translateX(${offset}px) rotate(${rotate}deg)`,
+                  zIndex: o.z,
+                  top: `${o.y}px`,
+                  transform: `translateX(calc(-50% + ${o.x}px)) rotate(${o.r}deg)`,
                 }}
               >
                 <div className="wireframe-frame">
