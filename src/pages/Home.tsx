@@ -80,46 +80,18 @@ const services = [
   {
     title: "Service Businesses",
     desc: "Contractors, trades, repair shops, professional services.",
-    items: [
-      "Online booking and appointment scheduling",
-      "Service area maps with embedded directions",
-      "Portfolio of past work with before-and-after photos",
-      "Customer testimonial and review sections",
-      "Contact forms with auto-response and forwarding",
-    ],
   },
   {
     title: "Retail & E-Commerce",
     desc: "Product listings, online ordering, inventory showcases.",
-    items: [
-      "Product catalog with images, pricing, and categories",
-      "Shopping cart and secure checkout flow",
-      "Inventory management dashboard",
-      "Mobile-optimized browsing with fast load times",
-      "Order notification emails and status tracking",
-    ],
   },
   {
     title: "Restaurants & Cafes",
     desc: "Menus, hours, and online ordering for food businesses.",
-    items: [
-      "Digital menu with photos, descriptions, and dietary tags",
-      "Online ordering and delivery integration",
-      "Hours, location, and contact page with Google Maps",
-      "Reservation and booking link integration",
-      "Photo gallery showcasing food and atmosphere",
-    ],
   },
   {
     title: "Community & Non-Profits",
     desc: "Event pages, donation links, volunteer sign-ups.",
-    items: [
-      "Event calendar with registration and reminders",
-      "Donation link integration (PayPal, Stripe, etc.)",
-      "Volunteer sign-up forms with auto-confirmation",
-      "Mission and impact storytelling pages",
-      "Newsletter sign-up and email collection",
-    ],
   },
 ];
 
@@ -218,6 +190,8 @@ export default function Home() {
   const [cmsPhone, setCmsPhone] = useState("(828) 555-0142");
   const [previewBrand, setPreviewBrand] = useState("Mountain Peak Cafe");
   const [previewUrl, setPreviewUrl] = useState("mountainpeakcafe.com");
+  const [mobileEditField, setMobileEditField] = useState<string | null>(null);
+  const [mobileEditValue, setMobileEditValue] = useState("");
 
   const headlineRef = useRef<HTMLInputElement>(null);
   const taglineRef = useRef<HTMLInputElement>(null);
@@ -225,10 +199,11 @@ export default function Home() {
   const aboutRef = useRef<HTMLTextAreaElement>(null);
   const hoursRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
 
-  const presets: Record<string, typeof cmsHeadline extends string ? {
+  const presets: Record<string, {
     headline: string; tagline: string; cta: string; about: string; hours: string; phone: string; brand: string; url: string
-  } : never> = {
+  }> = {
     cafe: {
       headline: "Fresh coffee, every day.",
       tagline: "Locally roasted & brewed in the heart of Brevard.",
@@ -323,6 +298,44 @@ export default function Home() {
     setPreviewUrl(p.url);
   }
 
+  function openMobileEditor(field: string, value: string) {
+    if (window.innerWidth >= 768) return;
+    setMobileEditField(field);
+    setMobileEditValue(value);
+  }
+
+  function applyMobileEdit() {
+    if (!mobileEditField) return;
+    switch (mobileEditField) {
+      case "headline": setCmsHeadline(mobileEditValue); break;
+      case "tagline": setCmsTagline(mobileEditValue); break;
+      case "cta": setCmsCta(mobileEditValue); break;
+      case "about": setCmsAbout(mobileEditValue); break;
+      case "hours": setCmsHours(mobileEditValue); break;
+      case "phone": setCmsPhone(mobileEditValue); break;
+      case "brand": setPreviewBrand(mobileEditValue); break;
+    }
+    setMobileEditField(null);
+  }
+
+  function cancelMobileEdit() {
+    setMobileEditField(null);
+  }
+
+  useEffect(() => {
+    if (!mobileEditField) return;
+    const el = document.querySelector(`[data-cms-field="${mobileEditField}"]`);
+    if (!el) return;
+    const handler = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > window.innerHeight + 100) {
+        setMobileEditField(null);
+      }
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, [mobileEditField]);
+
   return (
     <main className="main page-enter">
       {/* Hero */}
@@ -408,6 +421,8 @@ export default function Home() {
           bloated dashboards &mdash; just the fields that matter for your
           business. Edit your content, hit save, and see it go live instantly.
         </p>
+
+        <div className="cms-mobile-hint">Tap any highlighted element to edit</div>
 
         <div className="cms-presets">
           <span className="cms-presets-label">Presets:</span>
@@ -499,7 +514,7 @@ export default function Home() {
             </div>
             <div className="cms-preview-page">
               <nav className="cms-preview-nav">
-                <span className="cms-preview-brand">{previewBrand}</span>
+                <span className="cms-preview-brand" data-cms-field="brand" onClick={() => openMobileEditor("brand", previewBrand)}>{previewBrand}</span>
                 <div className="cms-preview-navlinks">
                   <span>Menu</span>
                   <span>About</span>
@@ -507,20 +522,48 @@ export default function Home() {
                 </div>
               </nav>
               <section className="cms-preview-hero">
-                <h3 className="cms-preview-headline" onClick={() => headlineRef.current?.focus()}>{cmsHeadline}</h3>
-                <p className="cms-preview-tagline" onClick={() => taglineRef.current?.focus()}>{cmsTagline}</p>
-                <span className="cms-preview-cta" onClick={() => ctaRef.current?.focus()}>{cmsCta}</span>
+                <h3 className="cms-preview-headline" data-cms-field="headline" onClick={() => openMobileEditor("headline", cmsHeadline)}>{cmsHeadline}</h3>
+                <p className="cms-preview-tagline" data-cms-field="tagline" onClick={() => openMobileEditor("tagline", cmsTagline)}>{cmsTagline}</p>
+                <span className="cms-preview-cta" data-cms-field="cta" onClick={() => openMobileEditor("cta", cmsCta)}>{cmsCta}</span>
               </section>
               <section className="cms-preview-section">
                 <h4>About us</h4>
-                <p className="cms-preview-text" onClick={() => aboutRef.current?.focus()}>{cmsAbout}</p>
+                <p className="cms-preview-text" data-cms-field="about" onClick={() => openMobileEditor("about", cmsAbout)}>{cmsAbout}</p>
               </section>
               <footer className="cms-preview-foot">
-                <span onClick={() => hoursRef.current?.focus()}>Hours: {cmsHours}</span>
-                <span onClick={() => phoneRef.current?.focus()}>Phone: {cmsPhone}</span>
+                <span data-cms-field="hours" onClick={() => openMobileEditor("hours", cmsHours)}>Hours: {cmsHours}</span>
+                <span data-cms-field="phone" onClick={() => openMobileEditor("phone", cmsPhone)}>Phone: {cmsPhone}</span>
               </footer>
             </div>
           </div>
+
+          {/* Mobile floating editor panel */}
+          {mobileEditField && (
+            <div className="cms-mobile-panel" ref={mobilePanelRef}>
+              <div className="cms-mobile-panel-inner">
+                {mobileEditField === "about" ? (
+                  <textarea
+                    className="cms-mobile-input"
+                    rows={3}
+                    value={mobileEditValue}
+                    onChange={(e) => setMobileEditValue(e.target.value)}
+                    autoFocus
+                  />
+                ) : (
+                  <input
+                    className="cms-mobile-input"
+                    value={mobileEditValue}
+                    onChange={(e) => setMobileEditValue(e.target.value)}
+                    autoFocus
+                  />
+                )}
+                <div className="cms-mobile-actions">
+                  <button className="cms-mobile-btn cms-mobile-cancel" onClick={cancelMobileEdit}>Cancel</button>
+                  <button className="cms-mobile-btn cms-mobile-apply" onClick={applyMobileEdit}>Apply</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </Section>
 
@@ -550,9 +593,8 @@ export default function Home() {
         <div className="process-steps">
           {steps.map((s) => (
             <div key={s.num} className="process-step">
-              <span className="step-number">{s.num}</span>
               <div className="step-content">
-                <h3>{s.title}</h3>
+                <h3><span className="step-number">{s.num}</span>{s.title}</h3>
                 <p>{s.desc}</p>
               </div>
             </div>

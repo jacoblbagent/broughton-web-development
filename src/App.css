@@ -34,6 +34,7 @@ body[data-theme="light"] {
   --color-border: #e5e5e5;
   --color-surface: #f7f7f7;
   --color-muted: #6b7280;
+  --color-gold: rgba(200, 140, 0, 0.7);
 }
 
 body[data-theme="dark"] {
@@ -44,6 +45,7 @@ body[data-theme="dark"] {
   --color-border: #2a3f4f;
   --color-surface: #1d3140;
   --color-muted: #9ca3af;
+  --color-gold: rgba(255, 215, 0, 0.6);
 }
 
 /* === Nav === */
@@ -384,17 +386,13 @@ section { padding: 7rem 0; }
 }
 
 .process-step {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+  margin-bottom: 1.25rem;
 }
 
 .step-number {
-  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-secondary);
-  min-width: 2rem;
-  line-height: 1.4;
+  margin-right: 0.5rem;
 }
 
 .step-content h3 {

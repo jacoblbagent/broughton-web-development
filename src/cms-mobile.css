@@ -1,0 +1,112 @@
+/* Mobile CMS editor — tap-to-edit floating panel for narrow screens */
+
+.cms-mobile-hint {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.cms-mobile-hint::before {
+  content: "ⓘ";
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.cms-mobile-hint::after {
+  content: "";
+  flex: 1;
+  max-width: 60px;
+  height: 0;
+  border-top: 2px dashed var(--color-gold);
+}
+
+@media (max-width: 767px) {
+  .cms-demo { display: none; }
+
+  .cms-mobile-hint { display: flex; }
+
+  [data-cms-field] {
+    outline: 2px dashed var(--color-gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: outline-color 0.2s;
+  }
+
+  [data-cms-field]:active {
+    outline-color: #ffd700;
+  }
+}
+
+.cms-mobile-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  animation: cms-slide-up 0.2s ease-out;
+}
+
+@keyframes cms-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.cms-mobile-panel-inner {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cms-mobile-input {
+  width: 100%;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.cms-mobile-input:focus {
+  outline: none;
+  border-color: var(--color-text-secondary);
+}
+
+.cms-mobile-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cms-mobile-btn {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.cms-mobile-apply {
+  background: var(--color-text-secondary);
+  color: #fff;
+  border-color: var(--color-text-secondary);
+}
+
+.cms-mobile-cancel {
+  background: transparent;
+  color: var(--color-text-secondary);
+}

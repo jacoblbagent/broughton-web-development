@@ -7,6 +7,7 @@ import Work from "./pages/Work";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import "./App.css";
+import "./cms-mobile.css";
 
 export default function App() {
   const { pathname } = useLocation();
