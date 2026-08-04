@@ -50,35 +50,46 @@ function CafeWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      {/* Nav bar */}
-      <rect width="320" height="20" fill={accent} opacity="0.9" />
-      <rect x="12" y="6" width="36" height="8" rx="3" fill="var(--color-bg)" opacity="0.9" />
-      <circle cx="260" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
-      <circle cx="278" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
-      <circle cx="296" cy="10" r="2.5" fill="var(--color-bg)" opacity="0.5" />
-      {/* Hero */}
-      <rect x="0" y="20" width="320" height="76" fill={warmTint} />
-      <rect x="40" y="36" width="100" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="50" y="48" width="80" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
-      <rect x="70" y="72" width="60" height="10" rx="3" fill={accentMuted} />
-      {/* Menu cards */}
-      <rect x="10" y="104" width="96" height="74" rx="3" fill={accentDim} />
-      <rect x="14" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
-      <rect x="14" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="14" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="14" y="166" width="40" height="6" rx="2" fill={accentMuted} />
-      <rect x="112" y="104" width="96" height="74" rx="3" fill={accentDim} />
-      <rect x="116" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
-      <rect x="116" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="116" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="116" y="166" width="40" height="6" rx="2" fill={accentMuted} />
-      <rect x="214" y="104" width="96" height="74" rx="3" fill={accentDim} />
-      <rect x="218" y="108" width="88" height="34" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
-      <rect x="218" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="218" y="156" width="30" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="218" y="166" width="40" height="6" rx="2" fill={accentMuted} />
+      {/* Logo + nav */}
+      <rect width="320" height="22" fill={accent} opacity="0.9" />
+      <rect x="10" y="5" width="32" height="10" rx="2" fill="var(--color-bg)" opacity="0.9" />
+      <rect x="200" y="7" width="24" height="5" rx="1.5" fill="var(--color-bg)" opacity="0.5" />
+      <rect x="228" y="7" width="24" height="5" rx="1.5" fill="var(--color-bg)" opacity="0.5" />
+      <rect x="256" y="7" width="24" height="5" rx="1.5" fill="var(--color-bg)" opacity="0.5" />
+      <rect x="286" y="5" width="24" height="10" rx="3" fill="var(--color-bg)" opacity="0.7" />
+      {/* Hero banner */}
+      <rect x="0" y="22" width="320" height="70" fill={warmTint} />
+      <rect x="30" y="36" width="120" height="7" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="30" y="48" width="90" height="4" rx="1.5" fill="var(--color-border)" opacity="0.6" />
+      <rect x="30" y="60" width="70" height="10" rx="3" fill={accentMuted} />
+      <rect x="230" y="34" width="80" height="46" rx="3" fill="color-mix(in srgb, #92400e 30%, transparent)" />
+      {/* Tabs */}
+      <rect x="0" y="92" width="320" height="14" fill="var(--color-bg)" />
+      <rect x="10" y="95" width="40" height="6" rx="2" fill={accentMuted} />
+      <rect x="58" y="95" width="40" height="6" rx="2" fill="var(--color-border)" />
+      <rect x="106" y="95" width="50" height="6" rx="2" fill="var(--color-border)" />
+      {/* Menu cards row */}
+      <rect x="8" y="112" width="98" height="56" rx="3" fill={accentDim} />
+      <rect x="12" y="116" width="90" height="26" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="12" y="148" width="40" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="12" y="156" width="24" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="50" y="154" width="20" height="6" rx="2" fill={accentMuted} />
+      <rect x="112" y="112" width="98" height="56" rx="3" fill={accentDim} />
+      <rect x="116" y="116" width="90" height="26" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="116" y="148" width="40" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="116" y="156" width="24" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="154" y="154" width="20" height="6" rx="2" fill={accentMuted} />
+      <rect x="216" y="112" width="98" height="56" rx="3" fill={accentDim} />
+      <rect x="220" y="116" width="90" height="26" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 10%, transparent)" />
+      <rect x="220" y="148" width="40" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="220" y="156" width="24" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="258" y="154" width="20" height="6" rx="2" fill={accentMuted} />
+      {/* Accordion */}
+      <rect x="8" y="174" width="304" height="8" rx="2" fill={accentDim} />
+      <rect x="16" y="176" width="60" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="298" y="175" width="8" height="5" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
       {/* Footer */}
-      <rect width="320" height="8" y="192" fill={accent} opacity="0.7" />
+      <rect width="320" height="8" y="192" fill={accent} opacity="0.6" />
     </svg>
   );
 }
@@ -87,36 +98,43 @@ function ServiceWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      {/* Nav */}
-      <rect x="0" y="0" width="320" height="18" fill="var(--color-bg)" />
-      <rect x="12" y="4" width="30" height="7" rx="2" fill={accent} />
-      <rect x="230" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="258" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="286" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      {/* Hero */}
-      <rect x="0" y="18" width="320" height="62" fill={blueTint} />
-      <rect x="40" y="30" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="30" y="42" width="100" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
-      <rect x="50" y="58" width="60" height="10" rx="3" fill={accentMuted} />
-      {/* Feature cards */}
-      <rect x="10" y="88" width="96" height="50" rx="3" fill={accentDim} />
-      <circle cx="58" cy="100" r="8" fill={accentMuted} />
-      <rect x="22" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="18" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
-      <rect x="112" y="88" width="96" height="50" rx="3" fill={accentDim} />
-      <circle cx="160" cy="100" r="8" fill={accentMuted} />
-      <rect x="124" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="120" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
-      <rect x="214" y="88" width="96" height="50" rx="3" fill={accentDim} />
-      <circle cx="262" cy="100" r="8" fill={accentMuted} />
-      <rect x="226" y="114" width="36" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="222" y="122" width="44" height="2" rx="1" fill="var(--color-border)" />
+      {/* Nav with button */}
+      <rect x="0" y="0" width="320" height="20" fill="var(--color-bg)" />
+      <rect x="10" y="5" width="36" height="8" rx="2" fill={accent} />
+      <rect x="200" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="226" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="252" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="284" y="4" width="28" height="10" rx="3" fill={accentMuted} />
+      {/* Hero banner */}
+      <rect x="0" y="20" width="320" height="60" fill={blueTint} />
+      <rect x="30" y="30" width="100" height="7" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="30" y="42" width="140" height="4" rx="1.5" fill="var(--color-border)" opacity="0.5" />
+      <rect x="30" y="56" width="70" height="10" rx="3" fill={accentMuted} />
+      <rect x="230" y="32" width="60" height="8" rx="2" fill={accentMuted} />
+      <rect x="230" y="44" width="50" height="4" rx="1.5" fill="var(--color-border)" opacity="0.5" />
+      {/* Feature cards with icons */}
+      <rect x="8" y="88" width="98" height="40" rx="3" fill={accentDim} />
+      <circle cx="24" cy="100" r="7" fill={accentMuted} />
+      <rect x="38" y="96" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="38" y="104" width="56" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="112" y="88" width="98" height="40" rx="3" fill={accentDim} />
+      <circle cx="128" cy="100" r="7" fill={accentMuted} />
+      <rect x="142" y="96" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="142" y="104" width="56" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="216" y="88" width="98" height="40" rx="3" fill={accentDim} />
+      <circle cx="232" cy="100" r="7" fill={accentMuted} />
+      <rect x="246" y="96" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="246" y="104" width="56" height="3" rx="1.5" fill="var(--color-border)" />
+      {/* Testimonial */}
+      <rect x="8" y="134" width="304" height="22" rx="3" fill={accentDim} />
+      <rect x="60" y="140" width="200" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="80" y="148" width="140" height="3" rx="1.5" fill="var(--color-border)" />
       {/* CTA banner */}
-      <rect x="0" y="146" width="320" height="38" fill={accentDim} />
-      <rect x="90" y="160" width="50" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="180" y="158" width="50" height="10" rx="3" fill={accentMuted} />
+      <rect x="0" y="162" width="320" height="24" fill={accentDim} />
+      <rect x="80" y="170" width="60" height="5" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="200" y="168" width="50" height="10" rx="3" fill={accentMuted} />
       {/* Footer */}
-      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.4" />
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
     </svg>
   );
 }
@@ -125,32 +143,52 @@ function RetailWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      {/* Nav */}
-      <rect x="0" y="0" width="320" height="20" fill={accent} opacity="0.85" />
-      <rect x="12" y="6" width="28" height="6" rx="2" fill="var(--color-bg)" opacity="0.9" />
-      <rect x="100" y="6" width="80" height="6" rx="3" fill="var(--color-bg)" opacity="0.3" />
-      <rect x="284" y="5" width="10" height="10" rx="2" fill="var(--color-bg)" opacity="0.6" />
-      {/* Product grid */}
-      <rect x="8" y="28" width="98" height="120" rx="3" fill={accentDim} />
-      <rect x="14" y="34" width="86" height="60" rx="3" fill={greenTint} />
-      <rect x="14" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="14" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="14" y="118" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="14" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
-      <rect x="111" y="28" width="98" height="120" rx="3" fill={accentDim} />
-      <rect x="117" y="34" width="86" height="60" rx="3" fill={warmTint} />
-      <rect x="117" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="117" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="117" y="118" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="117" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
-      <rect x="214" y="28" width="98" height="120" rx="3" fill={accentDim} />
-      <rect x="220" y="34" width="86" height="60" rx="3" fill={blueTint} />
-      <rect x="220" y="100" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="220" y="108" width="36" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="220" y="118" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="220" y="130" width="86" height="10" rx="2" fill={accentMuted} opacity="0.5" />
+      {/* Top bar: logo + search + cart + account */}
+      <rect x="0" y="0" width="320" height="22" fill={accent} opacity="0.85" />
+      <rect x="10" y="5" width="30" height="8" rx="2" fill="var(--color-bg)" opacity="0.9" />
+      <rect x="80" y="6" width="60" height="6" rx="3" fill="var(--color-bg)" opacity="0.25" />
+      <circle cx="160" cy="9" r="2" fill="var(--color-bg)" opacity="0.3" />
+      <rect x="268" y="5" width="10" height="10" rx="2" fill="var(--color-bg)" opacity="0.5" />
+      <rect x="286" y="5" width="10" height="10" rx="2" fill="var(--color-bg)" opacity="0.5" />
+      <rect x="304" y="5" width="8" height="10" rx="2" fill="var(--color-bg)" opacity="0.5" />
+      {/* Secondary nav */}
+      <rect x="0" y="22" width="320" height="8" fill="var(--color-bg)" />
+      <rect x="20" y="24" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="56" y="24" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="92" y="24" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="128" y="24" width="50" height="3" rx="1.5" fill="var(--color-border)" />
+      {/* Category filters */}
+      <rect x="8" y="34" width="28" height="14" rx="3" fill={accentMuted} />
+      <rect x="40" y="34" width="28" height="14" rx="3" fill={accentDim} />
+      <rect x="72" y="34" width="28" height="14" rx="3" fill={accentDim} />
+      <rect x="104" y="34" width="28" height="14" rx="3" fill={accentDim} />
+      {/* Product cards */}
+      <rect x="8" y="54" width="98" height="106" rx="3" fill={accentDim} />
+      <rect x="12" y="58" width="90" height="50" rx="3" fill={greenTint} />
+      <rect x="12" y="114" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="12" y="122" width="24" height="3" rx="1.5" fill="var(--color-border)" />
+      {/* Stars */}
+      <rect x="12" y="130" width="44" height="3" rx="1.5" fill={accentMuted} />
+      <rect x="12" y="138" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="12" y="148" width="90" height="8" rx="2" fill={accentMuted} opacity="0.4" />
+      {/* Sale badge */}
+      <rect x="76" y="54" width="22" height="10" rx="2" fill={accentMuted} />
+      <rect x="112" y="54" width="98" height="106" rx="3" fill={accentDim} />
+      <rect x="116" y="58" width="90" height="50" rx="3" fill={warmTint} />
+      <rect x="116" y="114" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="116" y="122" width="24" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="116" y="130" width="44" height="3" rx="1.5" fill={accentMuted} />
+      <rect x="116" y="138" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="116" y="148" width="90" height="8" rx="2" fill={accentMuted} opacity="0.4" />
+      <rect x="216" y="54" width="98" height="106" rx="3" fill={accentDim} />
+      <rect x="220" y="58" width="90" height="50" rx="3" fill={blueTint} />
+      <rect x="220" y="114" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="220" y="122" width="24" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="220" y="130" width="44" height="3" rx="1.5" fill={accentMuted} />
+      <rect x="220" y="138" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="220" y="148" width="90" height="8" rx="2" fill={accentMuted} opacity="0.4" />
       {/* Footer */}
-      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
+      <rect width="320" height="6" y="194" fill="var(--color-border)" opacity="0.25" />
     </svg>
   );
 }
@@ -160,35 +198,52 @@ function EventWireframe() {
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
       {/* Nav */}
-      <rect x="0" y="0" width="320" height="18" fill={purpleTint} opacity="0.5" />
-      <rect x="12" y="5" width="40" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="230" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="258" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="286" y="5" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      {/* Hero */}
-      <rect x="0" y="18" width="320" height="56" fill={purpleTint} />
-      <rect x="30" y="28" width="100" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="30" y="38" width="140" height="3" rx="1.5" fill="var(--color-border)" opacity="0.6" />
-      <rect x="30" y="56" width="50" height="8" rx="2" fill={accentMuted} />
-      <rect x="240" y="26" width="20" height="20" rx="3" fill={accentMuted} opacity="0.6" />
+      <rect x="0" y="0" width="320" height="20" fill={purpleTint} />
+      <rect x="10" y="5" width="34" height="8" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="200" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="226" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="252" y="6" width="22" height="5" rx="1.5" fill="var(--color-border)" />
+      <rect x="284" y="4" width="28" height="10" rx="3" fill={accentMuted} />
+      {/* Hero banner with date badge */}
+      <rect x="0" y="20" width="320" height="54" fill={purpleTint} />
+      <rect x="20" y="30" width="100" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="20" y="40" width="160" height="4" rx="1.5" fill="var(--color-border)" opacity="0.5" />
+      <rect x="20" y="56" width="60" height="8" rx="2" fill={accentMuted} />
+      <rect x="250" y="26" width="22" height="22" rx="3" fill={accentMuted} opacity="0.5" />
+      <rect x="256" y="32" width="10" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="256" y="38" width="10" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      {/* Upcoming events heading */}
+      <rect x="10" y="80" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="10" y="88" width="80" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="280" y="82" width="30" height="6" rx="2" fill={accentMuted} />
       {/* Event cards */}
-      <rect x="10" y="82" width="96" height="84" rx="3" fill={accentDim} />
-      <rect x="18" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="18" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="18" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="18" y="130" width="80" height="6" rx="2" fill={accentMuted} />
-      <rect x="112" y="82" width="96" height="84" rx="3" fill={accentDim} />
-      <rect x="120" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="120" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="120" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="120" y="130" width="80" height="6" rx="2" fill={accentMuted} />
-      <rect x="214" y="82" width="96" height="84" rx="3" fill={accentDim} />
-      <rect x="222" y="90" width="36" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="222" y="98" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="222" y="106" width="44" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="222" y="130" width="80" height="6" rx="2" fill={accentMuted} />
+      <rect x="8" y="98" width="98" height="68" rx="3" fill={accentDim} />
+      <rect x="14" y="104" width="28" height="12" rx="2" fill={accentMuted} />
+      <rect x="18" y="106" width="20" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="14" y="122" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="14" y="130" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="14" y="150" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="112" y="98" width="98" height="68" rx="3" fill={accentDim} />
+      <rect x="118" y="104" width="28" height="12" rx="2" fill={accentMuted} />
+      <rect x="122" y="106" width="20" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="118" y="122" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="118" y="130" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="118" y="150" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="216" y="98" width="98" height="68" rx="3" fill={accentDim} />
+      <rect x="222" y="104" width="28" height="12" rx="2" fill={accentMuted} />
+      <rect x="226" y="106" width="20" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="222" y="122" width="60" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="222" y="130" width="44" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="222" y="150" width="60" height="6" rx="2" fill={accentMuted} />
+      {/* Accordion FAQ */}
+      <rect x="8" y="172" width="304" height="8" rx="2" fill={accentDim} />
+      <rect x="16" y="174" width="80" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="298" y="173" width="8" height="5" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="8" y="183" width="304" height="8" rx="2" fill={accentDim} />
+      <rect x="16" y="185" width="80" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="298" y="184" width="8" height="5" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
       {/* Footer */}
-      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
+      <rect width="320" height="5" y="195" fill="var(--color-border)" opacity="0.25" />
     </svg>
   );
 }
@@ -198,61 +253,73 @@ function DashboardWireframe() {
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
       {/* Sidebar */}
-      <rect x="0" y="0" width="30" height="200" fill={accent} opacity="0.8" />
-      <circle cx="15" cy="18" r="4" fill="var(--color-bg)" opacity="0.3" />
-      <rect x="8" y="40" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
-      <rect x="8" y="64" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
-      <rect x="8" y="88" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
-      <rect x="8" y="112" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
-      <rect x="8" y="136" width="14" height="14" rx="3" fill="var(--color-bg)" opacity="0.2" />
-      {/* Header bar */}
-      <rect x="30" y="0" width="290" height="22" fill="var(--color-bg)" />
-      <rect x="40" y="7" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="220" y="6" width="30" height="8" rx="3" fill="var(--color-border)" />
-      <circle cx="270" cy="10" r="5" fill={accentMuted} />
-      <rect x="282" y="7" width="26" height="6" rx="2" fill="var(--color-border)" />
+      <rect x="0" y="0" width="34" height="200" fill={accent} opacity="0.85" />
+      <rect x="8" y="8" width="18" height="6" rx="2" fill="var(--color-bg)" opacity="0.9" />
+      <rect x="7" y="40" width="20" height="20" rx="4" fill="var(--color-bg)" opacity="0.15" />
+      <rect x="7" y="68" width="20" height="20" rx="4" fill="var(--color-bg)" opacity="0.3" />
+      <rect x="7" y="96" width="20" height="20" rx="4" fill="var(--color-bg)" opacity="0.15" />
+      <rect x="7" y="124" width="20" height="20" rx="4" fill="var(--color-bg)" opacity="0.15" />
+      <rect x="7" y="152" width="20" height="20" rx="4" fill="var(--color-bg)" opacity="0.15" />
+      {/* Top header */}
+      <rect x="34" y="0" width="286" height="24" fill="var(--color-bg)" />
+      <rect x="44" y="8" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="190" y="6" width="50" height="10" rx="3" fill={accentDim} />
+      <circle cx="262" cy="10" r="4" fill={accentMuted} />
+      <circle cx="278" cy="10" r="4" fill="var(--color-border)" />
+      <rect x="294" y="6" width="16" height="8" rx="3" fill={accentMuted} opacity="0.3" />
       {/* Stat cards */}
-      <rect x="38" y="30" width="66" height="40" rx="3" fill={accentDim} />
-      <rect x="44" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="44" y="46" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="110" y="30" width="66" height="40" rx="3" fill={greenTint} />
-      <rect x="116" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="116" y="46" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="182" y="30" width="66" height="40" rx="3" fill={warmTint} />
-      <rect x="188" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="188" y="46" width="30" height="6" rx="2" fill={accentMuted} />
-      <rect x="254" y="30" width="62" height="40" rx="3" fill={blueTint} />
-      <rect x="260" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="260" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="42" y="32" width="60" height="34" rx="3" fill={accentDim} />
+      <rect x="48" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="48" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="48" y="56" width="14" height="3" rx="1.5" fill={greenTint} opacity="0.6" />
+      <rect x="108" y="32" width="60" height="34" rx="3" fill={greenTint} />
+      <rect x="114" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="114" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="114" y="56" width="14" height="3" rx="1.5" fill={accentDim} opacity="0.6" />
+      <rect x="174" y="32" width="60" height="34" rx="3" fill={warmTint} />
+      <rect x="180" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="180" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="180" y="56" width="14" height="3" rx="1.5" fill={accentDim} opacity="0.6" />
+      <rect x="240" y="32" width="72" height="34" rx="3" fill={blueTint} />
+      <rect x="246" y="36" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="246" y="46" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="246" y="56" width="14" height="3" rx="1.5" fill={accentDim} opacity="0.6" />
+      {/* Tabs */}
+      <rect x="42" y="74" width="50" height="14" rx="3" fill={accentMuted} />
+      <rect x="98" y="74" width="50" height="14" rx="3" fill={accentDim} />
+      <rect x="154" y="74" width="50" height="14" rx="3" fill={accentDim} />
       {/* Table */}
-      <rect x="38" y="80" width="274" height="100" rx="3" fill={accentDim} />
-      {/* Table header */}
-      <rect x="42" y="84" width="266" height="14" rx="2" fill={accentMuted} />
-      <rect x="50" y="88" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="100" y="88" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="160" y="88" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="240" y="88" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      {/* Table rows */}
-      <rect x="50" y="106" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="100" y="106" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="160" y="106" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="240" y="106" width="30" height="4" rx="2" fill={accentMuted} />
-      <rect x="50" y="120" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="100" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="160" y="120" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="240" y="120" width="30" height="4" rx="2" fill={accentMuted} />
-      <rect x="50" y="134" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="100" y="134" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="160" y="134" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="240" y="134" width="30" height="4" rx="2" fill={accentMuted} />
-      <rect x="50" y="148" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="100" y="148" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="160" y="148" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="240" y="148" width="30" height="4" rx="2" fill={accentMuted} />
-      <rect x="50" y="162" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="100" y="162" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="160" y="162" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="240" y="162" width="30" height="4" rx="2" fill={accentMuted} />
+      <rect x="42" y="94" width="270" height="90" rx="3" fill={accentDim} />
+      <rect x="46" y="98" width="262" height="12" rx="2" fill={accentMuted} />
+      <rect x="52" y="101" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="100" y="101" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="160" y="101" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="240" y="101" width="30" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="52" y="118" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="118" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="118" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="252" y="116" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="52" y="130" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="130" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="130" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="252" y="128" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="52" y="142" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="142" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="142" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="252" y="140" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="52" y="154" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="154" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="154" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="252" y="152" width="30" height="6" rx="2" fill={accentMuted} />
+      <rect x="52" y="166" width="20" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="100" y="166" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="160" y="166" width="50" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="252" y="164" width="30" height="6" rx="2" fill={accentMuted} />
+      {/* Pagination */}
+      <rect x="160" y="188" width="6" height="6" rx="1.5" fill={accentMuted} />
+      <rect x="172" y="188" width="6" height="6" rx="1.5" fill="var(--color-border)" />
+      <rect x="184" y="188" width="6" height="6" rx="1.5" fill="var(--color-border)" />
+      <rect x="196" y="188" width="6" height="6" rx="1.5" fill="var(--color-border)" />
     </svg>
   );
 }
@@ -261,44 +328,55 @@ function BlogWireframe() {
   return (
     <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
-      {/* Header */}
-      <rect x="0" y="0" width="320" height="20" fill="var(--color-bg)" />
-      <rect x="12" y="6" width="30" height="6" rx="2" fill={accent} />
-      <rect x="220" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="248" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="276" y="6" width="22" height="4" rx="1.5" fill="var(--color-border)" />
-      <rect x="304" y="5" width="10" height="10" rx="2" fill="var(--color-border)" />
-      {/* Featured post */}
-      <rect x="0" y="20" width="220" height="80" rx="0" fill={blueTint} />
-      <rect x="14" y="28" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
-      <rect x="14" y="40" width="50" height="3" rx="1.5" fill="var(--color-border)" opacity="0.5" />
-      <rect x="14" y="60" width="120" height="5" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
-      <rect x="14" y="70" width="90" height="3" rx="1.5" fill="var(--color-border)" opacity="0.4" />
-      {/* Sidebar */}
-      <rect x="228" y="20" width="92" height="80" rx="3" fill={accentDim} />
-      <rect x="236" y="28" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="236" y="40" width="60" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="236" y="50" width="60" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="236" y="60" width="60" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="236" y="70" width="60" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="236" y="80" width="60" height="3" rx="1.5" fill="var(--color-border)" />
-      {/* Post card row */}
-      <rect x="8" y="108" width="150" height="64" rx="3" fill={accentDim} />
-      <rect x="14" y="114" width="138" height="30" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
-      <rect x="14" y="150" width="60" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="14" y="158" width="40" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="14" y="166" width="30" height="4" rx="2" fill={accentMuted} />
-      <rect x="164" y="108" width="148" height="64" rx="3" fill={accentDim} />
-      <rect x="170" y="114" width="136" height="30" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
-      <rect x="170" y="150" width="60" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
-      <rect x="170" y="158" width="40" height="3" rx="1.5" fill="var(--color-border)" />
-      <rect x="170" y="166" width="30" height="4" rx="2" fill={accentMuted} />
+      {/* Header: logo + nav + search */}
+      <rect x="0" y="0" width="320" height="22" fill="var(--color-bg)" />
+      <rect x="10" y="6" width="28" height="7" rx="2" fill={accent} />
+      <rect x="200" y="7" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="226" y="7" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="252" y="7" width="22" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="286" y="5" width="10" height="10" rx="2" fill="var(--color-border)" />
+      <rect x="302" y="5" width="10" height="10" rx="2" fill="var(--color-border)" />
+      {/* Featured hero post */}
+      <rect x="0" y="22" width="224" height="80" rx="0" fill={blueTint} />
+      <rect x="12" y="28" width="80" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.5" />
+      <rect x="12" y="38" width="60" height="3" rx="1.5" fill="var(--color-border)" opacity="0.5" />
+      <rect x="12" y="60" width="140" height="5" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="12" y="70" width="100" height="3" rx="1.5" fill="var(--color-border)" opacity="0.4" />
+      <rect x="12" y="82" width="50" height="8" rx="2" fill={accentMuted} />
+      {/* Sidebar: search + categories */}
+      <rect x="232" y="22" width="88" height="80" rx="3" fill={accentDim} />
+      <rect x="240" y="30" width="72" height="10" rx="3" fill="var(--color-border)" />
+      <rect x="240" y="48" width="40" height="4" rx="2" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="240" y="58" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="240" y="66" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="240" y="74" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="240" y="82" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="240" y="90" width="60" height="3" rx="1.5" fill="var(--color-border)" />
+      {/* Post cards */}
+      <rect x="8" y="110" width="150" height="56" rx="3" fill={accentDim} />
+      <rect x="12" y="114" width="142" height="26" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
+      <rect x="12" y="146" width="50" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="12" y="154" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="64" y="152" width="24" height="6" rx="2" fill={accentMuted} />
+      <rect x="164" y="110" width="148" height="56" rx="3" fill={accentDim} />
+      <rect x="168" y="114" width="140" height="26" rx="2" fill="color-mix(in srgb, var(--color-text-secondary) 8%, transparent)" />
+      <rect x="168" y="146" width="50" height="3" rx="1.5" fill="var(--color-text-secondary)" opacity="0.3" />
+      <rect x="168" y="154" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="220" y="152" width="24" height="6" rx="2" fill={accentMuted} />
+      {/* Tags */}
+      <rect x="8" y="172" width="40" height="10" rx="3" fill={accentDim} />
+      <rect x="52" y="172" width="40" height="10" rx="3" fill={accentDim} />
+      <rect x="96" y="172" width="50" height="10" rx="3" fill={accentDim} />
+      <rect x="150" y="172" width="50" height="10" rx="3" fill={accentDim} />
+      {/* Pagination */}
+      <rect x="230" y="174" width="6" height="6" rx="1.5" fill={accentMuted} />
+      <rect x="242" y="174" width="6" height="6" rx="1.5" fill="var(--color-border)" />
+      <rect x="254" y="174" width="6" height="6" rx="1.5" fill="var(--color-border)" />
       {/* Footer */}
-      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.3" />
+      <rect width="320" height="8" y="192" fill="var(--color-border)" opacity="0.2" />
     </svg>
   );
 }
-
 const wireframes = [
   { id: "cafe", render: CafeWireframe },
   { id: "service", render: ServiceWireframe },
