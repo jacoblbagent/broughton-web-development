@@ -204,6 +204,7 @@ export default function Home() {
   const [previewUrl, setPreviewUrl] = useState("mountainpeakcafe.com");
   const [mobileEditField, setMobileEditField] = useState<string | null>(null);
   const [mobileEditValue, setMobileEditValue] = useState("");
+  const [mobileEditorFocused, setMobileEditorFocused] = useState(false);
 
   const headlineRef = useRef<HTMLInputElement>(null);
   const taglineRef = useRef<HTMLInputElement>(null);
@@ -462,9 +463,22 @@ export default function Home() {
                 <span data-cms-field="phone" onClick={() => openMobileEditor("phone", cmsPhone)}>Phone: {cmsPhone}</span>
               </footer>
             </div>
+          </div>
 
-            {/* Mobile editor — appears below preview when user taps an element */}
-            <div className={`cms-mobile-editor${mobileEditField ? " open" : ""}`}>
+          {/* Arrow between preview and editor */}
+          {mobileEditField && (
+            <div className="cms-mobile-arrow-wrap">
+              <span className={`cms-mobile-arrow${mobileEditorFocused ? " up" : ""}`}>
+                <svg viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="6" y1="0" x2="6" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M2 8L6 14L10 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          )}
+
+          {/* Mobile editor — above preview, separated from page content */}
+          <div className={`cms-mobile-editor${mobileEditField ? " open" : ""}`}>
               {mobileEditField && (
                 <>
                   <span className="cms-mobile-label">
@@ -476,12 +490,16 @@ export default function Home() {
                       rows={3}
                       value={mobileEditValue}
                       onChange={(e) => setMobileEditValue(e.target.value)}
+                      onFocus={() => setMobileEditorFocused(true)}
+                      onBlur={() => setMobileEditorFocused(false)}
                     />
                   ) : (
                     <input
                       className="cms-mobile-input"
                       value={mobileEditValue}
                       onChange={(e) => setMobileEditValue(e.target.value)}
+                      onFocus={() => setMobileEditorFocused(true)}
+                      onBlur={() => setMobileEditorFocused(false)}
                     />
                   )}
                   <div className="cms-mobile-actions">
@@ -490,7 +508,6 @@ export default function Home() {
                   </div>
                 </>
               )}
-            </div>
           </div>
 
           {/* CMS panel — hidden on mobile, full form on desktop */}
