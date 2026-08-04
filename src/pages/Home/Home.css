@@ -78,19 +78,31 @@
 
 /* === What I build — wireframes === */
 .wireframe-showcase {
+  position: relative;
+  min-height: 260px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 1.5rem;
 }
 
 .wireframe-card {
-  max-width: 400px;
-  width: 100%;
+  position: absolute;
+  max-width: 380px;
+  width: 85%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 6px;
   overflow: hidden;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, z-index 0s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: default;
+}
+
+.wireframe-card:hover,
+.wireframe-card:focus-within {
+  z-index: 10 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .wireframe-card.fade-out {

@@ -548,7 +548,7 @@ export default function Home() {
   const [businessSpinning, setBusinessSpinning] = useState(false);
   const [problemQuoteIdx, setProblemQuoteIdx] = useState(0);
   const [problemQuoteFading, setProblemQuoteFading] = useState(false);
-  const [wireframeIdx, setWireframeIdx] = useState(0);
+  const [wireframeIndices, setWireframeIndices] = useState<number[]>([0, 1, 2]);
   const [wireframeFading, setWireframeFading] = useState(false);
 
   const headlineRef = useRef<HTMLInputElement>(null);
@@ -581,10 +581,12 @@ export default function Home() {
     const timer = setInterval(() => {
       setWireframeFading(true);
       setTimeout(() => {
-        setWireframeIdx((i) => (i + 1) % wireframes.length);
+        const pool = [...Array(wireframes.length).keys()];
+        const shuffled = pool.sort(() => Math.random() - 0.5);
+        setWireframeIndices(shuffled.slice(0, 3));
         setWireframeFading(false);
       }, 300);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -793,19 +795,27 @@ export default function Home() {
           website layouts I create.
         </p>
         <div className="wireframe-showcase">
-          {(() => {
-            const w = wireframes[wireframeIdx];
+          {wireframeIndices.map((idx, i) => {
+            const w = wireframes[idx];
             const Frame = w.render;
+            const offset = i === 0 ? -8 : i === 1 ? 8 : 0;
+            const rotate = i === 0 ? -2 : i === 1 ? 1.5 : -0.5;
+            const zOffset = i === 0 ? 2 : i === 1 ? 1 : 0;
             return (
               <div
+                key={`${idx}-${i}`}
                 className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
+                style={{
+                  zIndex: zOffset,
+                  transform: `translateX(${offset}px) rotate(${rotate}deg)`,
+                }}
               >
                 <div className="wireframe-frame">
                   <Frame />
                 </div>
               </div>
             );
-          })()}
+          })}
         </div>
       </Section>
 
