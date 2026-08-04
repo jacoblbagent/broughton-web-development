@@ -1,33 +1,6 @@
-/* Mobile CMS editor — tap-to-edit floating panel for narrow screens */
-
-.cms-mobile-hint {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  color: var(--color-gold);
-  margin-bottom: 12px;
-}
-
-.cms-mobile-hint::before {
-  content: "ⓘ";
-  font-size: 1rem;
-  margin-right: 6px;
-}
-
-.cms-mobile-hint::after {
-  content: "";
-  flex: 1;
-  max-width: 60px;
-  height: 0;
-  border-top: 2px dashed var(--color-gold);
-}
+/* Mobile CMS — tap-to-edit, fields shown below preview */
 
 @media (max-width: 767px) {
-  .cms-demo { display: none; }
-
-  .cms-mobile-hint { display: flex; }
-
   [data-cms-field] {
     outline: 2px dashed var(--color-gold);
     outline-offset: 2px;
@@ -42,30 +15,28 @@
   }
 }
 
-.cms-mobile-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+.cms-mobile-editor {
+  display: none;
+  margin-top: 16px;
+  padding: 12px;
   background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-  animation: cms-slide-up 0.2s ease-out;
-  /* -webkit-transform: translateZ(0); */
-  /* transform: translateZ(0); */
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  gap: 8px;
 }
 
-@keyframes cms-slide-up {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-.cms-mobile-panel-inner {
-  padding: 16px;
+.cms-mobile-editor.open {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.cms-mobile-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
 }
 
 .cms-mobile-input {
@@ -92,10 +63,10 @@
 
 .cms-mobile-btn {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
@@ -112,4 +83,9 @@
 .cms-mobile-cancel {
   background: transparent;
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 767px) {
+  .cms-mobile-editor { display: flex; }
+  .cms-mobile-editor:not(.open) { display: none; }
 }

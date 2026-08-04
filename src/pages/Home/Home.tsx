@@ -177,6 +177,16 @@ function Section({
   );
 }
 
+const mobileFieldLabel: Record<string, string> = {
+  headline: "Hero headline",
+  tagline: "Hero tagline",
+  cta: "CTA button",
+  about: "About section",
+  hours: "Hours",
+  phone: "Phone",
+  brand: "Business name",
+};
+
 export default function Home() {
   const [cmsHeadline, setCmsHeadline] = useState(
     "Fresh coffee, every day."
@@ -201,8 +211,6 @@ export default function Home() {
   const aboutRef = useRef<HTMLTextAreaElement>(null);
   const hoursRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
-  const mobilePanelRef = useRef<HTMLDivElement>(null);
-  const scrollPosRef = useRef(0);
 
   const presets: Record<string, {
     headline: string; tagline: string; cta: string; about: string; hours: string; phone: string; brand: string; url: string
@@ -303,7 +311,6 @@ export default function Home() {
 
   function openMobileEditor(field: string, value: string) {
     if (window.innerWidth >= 768) return;
-    scrollPosRef.current = window.scrollY;
     setMobileEditField(field);
     setMobileEditValue(value);
   }
@@ -325,20 +332,6 @@ export default function Home() {
   function cancelMobileEdit() {
     setMobileEditField(null);
   }
-
-  useEffect(() => {
-    if (!mobileEditField) return;
-    const el = document.querySelector(`[data-cms-field="${mobileEditField}"]`);
-    if (!el) return;
-    const handler = () => {
-      const rect = el.getBoundingClientRect();
-      if (rect.bottom < -100 || rect.top > window.innerHeight + 100) {
-        setMobileEditField(null);
-      }
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, [mobileEditField]);
 
   return (
     <main className="main page-enter">
@@ -373,7 +366,6 @@ export default function Home() {
           <p>
             <Link to="/about">More about me &rarr;</Link>
           </p>
-
         </div>
       </Section>
 
@@ -426,8 +418,6 @@ export default function Home() {
           business. Edit your content, hit save, and see it go live instantly.
         </p>
 
-        <div className="cms-mobile-hint">Tap any highlighted element to edit</div>
-
         <div className="cms-presets">
           <span className="cms-presets-label">Presets:</span>
           <button className="cms-preset-btn" onClick={() => loadPreset("cafe")}>Cafe</button>
@@ -441,7 +431,69 @@ export default function Home() {
         </div>
 
         <div className="cms-layout">
-          {/* CMS panel */}
+          {/* Preview — first so it stacks on top on mobile */}
+          <div className="cms-preview">
+            <div className="cms-preview-bar">
+              <div className="cms-preview-dots">
+                <span /><span /><span />
+              </div>
+              <span className="cms-preview-url">{previewUrl}</span>
+            </div>
+            <div className="cms-preview-page">
+              <nav className="cms-preview-nav">
+                <span className="cms-preview-brand" data-cms-field="brand" onClick={() => openMobileEditor("brand", previewBrand)}>{previewBrand}</span>
+                <div className="cms-preview-navlinks">
+                  <span>Menu</span>
+                  <span>About</span>
+                  <span>Contact</span>
+                </div>
+              </nav>
+              <section className="cms-preview-hero">
+                <h3 className="cms-preview-headline" data-cms-field="headline" onClick={() => openMobileEditor("headline", cmsHeadline)}>{cmsHeadline}</h3>
+                <p className="cms-preview-tagline" data-cms-field="tagline" onClick={() => openMobileEditor("tagline", cmsTagline)}>{cmsTagline}</p>
+                <span className="cms-preview-cta" data-cms-field="cta" onClick={() => openMobileEditor("cta", cmsCta)}>{cmsCta}</span>
+              </section>
+              <section className="cms-preview-section">
+                <h4>About us</h4>
+                <p className="cms-preview-text" data-cms-field="about" onClick={() => openMobileEditor("about", cmsAbout)}>{cmsAbout}</p>
+              </section>
+              <footer className="cms-preview-foot">
+                <span data-cms-field="hours" onClick={() => openMobileEditor("hours", cmsHours)}>Hours: {cmsHours}</span>
+                <span data-cms-field="phone" onClick={() => openMobileEditor("phone", cmsPhone)}>Phone: {cmsPhone}</span>
+              </footer>
+            </div>
+
+            {/* Mobile editor — appears below preview when user taps an element */}
+            <div className={`cms-mobile-editor${mobileEditField ? " open" : ""}`}>
+              {mobileEditField && (
+                <>
+                  <span className="cms-mobile-label">
+                    {mobileFieldLabel[mobileEditField] || mobileEditField}
+                  </span>
+                  {mobileEditField === "about" ? (
+                    <textarea
+                      className="cms-mobile-input"
+                      rows={3}
+                      value={mobileEditValue}
+                      onChange={(e) => setMobileEditValue(e.target.value)}
+                    />
+                  ) : (
+                    <input
+                      className="cms-mobile-input"
+                      value={mobileEditValue}
+                      onChange={(e) => setMobileEditValue(e.target.value)}
+                    />
+                  )}
+                  <div className="cms-mobile-actions">
+                    <button className="cms-mobile-btn cms-mobile-cancel" onClick={cancelMobileEdit}>Cancel</button>
+                    <button className="cms-mobile-btn cms-mobile-apply" onClick={applyMobileEdit}>Apply</button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* CMS panel — hidden on mobile, full form on desktop */}
           <div className="cms-demo">
             <div className="cms-toolbar">
               <span className="cms-toolbar-title">Page content</span>
@@ -507,79 +559,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Preview panel */}
-          <div className="cms-preview">
-            <div className="cms-preview-bar">
-              <div className="cms-preview-dots">
-                <span /><span /><span />
-              </div>
-              <span className="cms-preview-url">{previewUrl}</span>
-            </div>
-            <div className="cms-preview-page">
-              <nav className="cms-preview-nav">
-                <span className="cms-preview-brand" data-cms-field="brand" onClick={() => openMobileEditor("brand", previewBrand)}>{previewBrand}</span>
-                <div className="cms-preview-navlinks">
-                  <span>Menu</span>
-                  <span>About</span>
-                  <span>Contact</span>
-                </div>
-              </nav>
-              <section className="cms-preview-hero">
-                <h3 className="cms-preview-headline" data-cms-field="headline" onClick={() => openMobileEditor("headline", cmsHeadline)}>{cmsHeadline}</h3>
-                <p className="cms-preview-tagline" data-cms-field="tagline" onClick={() => openMobileEditor("tagline", cmsTagline)}>{cmsTagline}</p>
-                <span className="cms-preview-cta" data-cms-field="cta" onClick={() => openMobileEditor("cta", cmsCta)}>{cmsCta}</span>
-              </section>
-              <section className="cms-preview-section">
-                <h4>About us</h4>
-                <p className="cms-preview-text" data-cms-field="about" onClick={() => openMobileEditor("about", cmsAbout)}>{cmsAbout}</p>
-              </section>
-              <footer className="cms-preview-foot">
-                <span data-cms-field="hours" onClick={() => openMobileEditor("hours", cmsHours)}>Hours: {cmsHours}</span>
-                <span data-cms-field="phone" onClick={() => openMobileEditor("phone", cmsPhone)}>Phone: {cmsPhone}</span>
-              </footer>
-            </div>
-          </div>
-
-          {/* Mobile floating editor panel */}
-          {mobileEditField && (
-            <div className="cms-mobile-panel" ref={mobilePanelRef}>
-              <div className="cms-mobile-panel-inner">
-                {mobileEditField === "about" ? (
-                  <textarea
-                    className="cms-mobile-input"
-                    rows={3}
-                    value={mobileEditValue}
-                    onChange={(e) => setMobileEditValue(e.target.value)}
-                    onFocus={() => {
-                      requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                          window.scrollTo(0, scrollPosRef.current);
-                        });
-                      });
-                    }}
-                  />
-                ) : (
-                  <input
-                    className="cms-mobile-input"
-                    value={mobileEditValue}
-                    onChange={(e) => setMobileEditValue(e.target.value)}
-                    onFocus={() => {
-                      requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                          window.scrollTo(0, scrollPosRef.current);
-                        });
-                      });
-                    }}
-                  />
-                )}
-                <div className="cms-mobile-actions">
-                  <button className="cms-mobile-btn cms-mobile-cancel" onClick={cancelMobileEdit}>Cancel</button>
-                  <button className="cms-mobile-btn cms-mobile-apply" onClick={applyMobileEdit}>Apply</button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </Section>
 
