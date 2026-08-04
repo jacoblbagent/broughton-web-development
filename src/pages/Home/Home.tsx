@@ -551,14 +551,26 @@ export default function Home() {
                     rows={3}
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
-                    onFocus={() => window.scrollTo(0, scrollPosRef.current)}
+                    onFocus={() => {
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                          window.scrollTo(0, scrollPosRef.current);
+                        });
+                      });
+                    }}
                   />
                 ) : (
                   <input
                     className="cms-mobile-input"
                     value={mobileEditValue}
                     onChange={(e) => setMobileEditValue(e.target.value)}
-                    onFocus={() => window.scrollTo(0, scrollPosRef.current)}
+                    onFocus={() => {
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                          window.scrollTo(0, scrollPosRef.current);
+                        });
+                      });
+                    }}
                   />
                 )}
                 <div className="cms-mobile-actions">
