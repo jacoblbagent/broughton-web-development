@@ -1,0 +1,75 @@
+/* === Contact Page === */
+.contact-page-section {
+  padding: 2rem 0 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contact-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contact-input {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: var(--color-text-secondary);
+}
+
+.contact-input::placeholder {
+  color: var(--color-muted);
+  opacity: 0.6;
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.contact-form-actions {
+  padding-top: 0.5rem;
+}
+
+.contact-or {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.contact-email-link {
+  word-break: break-all;
+}
+
+.contact-cta {
+  margin-top: 0.5rem;
+}

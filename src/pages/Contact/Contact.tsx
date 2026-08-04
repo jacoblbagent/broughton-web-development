@@ -1,3 +1,5 @@
+import "./Contact.css";
+
 export default function Contact() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

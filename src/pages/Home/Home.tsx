@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
+import "./Home.css";
+import "../../cms-mobile.css";
 
 const towns = [
   "Brevard",

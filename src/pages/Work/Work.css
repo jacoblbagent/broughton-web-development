@@ -1,0 +1,88 @@
+/* === Work Page === */
+.work-header {
+  padding: 7rem 0 0;
+}
+
+.work-header .section-sub {
+  margin-bottom: 0;
+}
+
+.work-grid-section {
+  padding: 3rem 0 7rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 639px) {
+  .work-grid { grid-template-columns: 1fr; }
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tag {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.project-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  margin-top: auto;
+}
+
+.project-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}

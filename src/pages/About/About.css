@@ -1,0 +1,36 @@
+/* === About Page === */
+.about-page-section {
+  padding: 2rem 0 7rem;
+}
+
+.about-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-page-content h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 2.5rem;
+}
+
+.about-page-content h2:first-child {
+  margin-top: 0;
+}
+
+.about-page-content p {
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.about-page-content a:not(.btn) {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.about-page-content a:not(.btn):hover {
+  opacity: 0.8;
+}

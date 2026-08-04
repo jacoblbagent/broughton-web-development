@@ -1,13 +1,12 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Work from "./pages/Work";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Home from "./pages/Home/Home";
+import Work from "./pages/Work/Work";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 import "./App.css";
-import "./cms-mobile.css";
 
 export default function App() {
   const { pathname } = useLocation();
