@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import "./Home.css";
 import "../../cms-mobile.css";
 
@@ -17,84 +17,269 @@ const towns = [
   "Penrose",
 ];
 
-const problems = [
-  {
-    icon: "phone",
-    title: "Looks dated on mobile",
-    desc: "Half your customers are finding you on their phone. If your site doesn't work on a small screen, they're gone in seconds.",
-  },
-  {
-    icon: "speed",
-    title: "Painfully slow",
-    desc: "Slow pages cost you customers. A one-second delay can cut conversions by 7% — and Google ranks slow sites lower too.",
-  },
-  {
-    icon: "edit",
-    title: "Can't make changes yourself",
-    desc: "Need to update your hours or swap a photo? You shouldn't have to call someone and wait a week for a simple text change.",
-  },
-  {
-    icon: "shield",
-    title: "Agency lock-in and upsells",
-    desc: "The last pitch came with SEO packages, social media management, and a monthly retainer you didn't ask for. You just want a website.",
-  },
-  {
-    icon: "target",
-    title: "You need a site, not a strategy",
-    desc: "Clean, fast, professional — that's the bar. You don't need a 'full digital transformation'. You need something that works and is easy to maintain.",
-  },
+const palette = ["#0d9488", "#16a34a", "#2563eb", "#7c3aed"];
+
+const problemQuotes = [
+  "I just want a simple website that looks good on phones, loads fast, and lets me update my own hours. I don't need a marketing agency or a monthly retainer.",
+  "Every quote I got was $8,000+ with a bunch of stuff I didn't need. I just wanted something clean that works.",
+  "My site was built five years ago and it shows. It's slow, broken on phones, and I can't update anything myself.",
+  "I called three agencies and all of them tried to sell me on SEO packages and social media management. I just want a website.",
+  "I've been putting this off for two years because it felt overwhelming. Turns out it didn't have to be.",
+  "My current site was built by a friend of a friend years ago and now I can't even log in to make changes.",
+  "I lost a customer who said our site looked 'unprofessional' on their phone. That stung.",
+  "Every time Google updates something, my site drops to page four. I don't understand why my site is invisible.",
+  "I asked my nephew to build my site. He did his best, but it's not something I can manage on my own.",
+  "I spent $5,000 on a site two years ago and I still can't update my own menu without emailing the developer.",
+  "The last developer ghosted me after launch. I'm scared of getting burned again.",
+  "My photos look great on Instagram but tiny and blurry on my own website. Makes no sense.",
+  "I've had three different people touch my website and it looks like a Frankenstein project.",
+  "Every agency wants me to commit to a 12-month contract. What if I just want a site and not a subscription?",
+  "I'm still getting leads from Yelp and Facebook instead of my own website. Something's wrong with that picture.",
 ];
 
-const problemIcons = {
-  phone: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-      <line x1="12" y1="18" x2="12.01" y2="18" />
-    </svg>
-  ),
-  speed: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
-  ),
-  edit: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-    </svg>
-  ),
-  shield: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  ),
-  target: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
-  ),
-};
+// --- Wireframe mockups ---
+const accent = "var(--color-accent)";
+const accentMuted = "color-mix(in srgb, var(--color-accent) 25%, transparent)";
+const accentDim = "color-mix(in srgb, var(--color-accent) 12%, transparent)";
+const warmTint = "color-mix(in srgb, #d97706 20%, transparent)";
+const greenTint = "color-mix(in srgb, #16a34a 20%, transparent)";
+const blueTint = "color-mix(in srgb, #2563eb 20%, transparent)";
+const purpleTint = "color-mix(in srgb, #7c3aed 20%, transparent)";
 
-const services = [
-  {
-    title: "Service Businesses",
-    desc: "Contractors, trades, repair shops, professional services.",
-  },
-  {
-    title: "Retail & E-Commerce",
-    desc: "Product listings, online ordering, inventory showcases.",
-  },
-  {
-    title: "Restaurants & Cafes",
-    desc: "Menus, hours, and online ordering for food businesses.",
-  },
-  {
-    title: "Community & Non-Profits",
-    desc: "Event pages, donation links, volunteer sign-ups.",
-  },
+function CafeWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      <rect x="12" y="10" width="40" height="4" rx="2" fill={accent} />
+      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="12" y="28" width="296" height="72" rx="3" fill={warmTint} />
+      <rect x="20" y="36" width="90" height="6" rx="2" fill="var(--color-text-secondary)" opacity="0.4" />
+      <rect x="20" y="48" width="60" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="20" y="80" width="70" height="10" rx="3" fill={accentMuted} />
+      <rect x="12" y="112" width="96" height="60" rx="3" fill={accentDim} />
+      <rect x="112" y="112" width="96" height="60" rx="3" fill={accentDim} />
+      <rect x="212" y="112" width="96" height="60" rx="3" fill={accentDim} />
+      <rect x="20" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="20" y="148" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="120" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="120" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="120" y="148" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="220" y="120" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="220" y="128" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="220" y="148" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="12" y="183" width="296" height="2" rx="1" fill="var(--color-border)" />
+    </svg>
+  );
+}
+
+function ServiceWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      <rect x="12" y="10" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="230" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="266" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="12" y="28" width="296" height="58" rx="3" fill={blueTint} />
+      <rect x="20" y="38" width="100" height="5" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="48" width="70" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="220" y="64" width="80" height="12" rx="3" fill={accentMuted} />
+      <rect x="12" y="98" width="146" height="38" rx="3" fill={accentDim} />
+      <rect x="162" y="98" width="146" height="38" rx="3" fill={accentDim} />
+      <rect x="12" y="142" width="146" height="38" rx="3" fill={accentDim} />
+      <rect x="162" y="142" width="146" height="38" rx="3" fill={accentDim} />
+      <rect x="20" y="108" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="116" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="170" y="108" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="170" y="116" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="20" y="152" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="160" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="170" y="152" width="40" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="170" y="160" width="30" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="12" y="190" width="296" height="2" rx="1" fill="var(--color-border)" />
+    </svg>
+  );
+}
+
+function RetailWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      <rect x="12" y="10" width="45" height="4" rx="2" fill={accent} />
+      <rect x="100" y="10" width="80" height="6" rx="3" fill="var(--color-border)" />
+      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="12" y="30" width="94" height="120" rx="3" fill={accentDim} />
+      <rect x="113" y="30" width="94" height="120" rx="3" fill={accentDim} />
+      <rect x="214" y="30" width="94" height="120" rx="3" fill={accentDim} />
+      <rect x="22" y="40" width="74" height="60" rx="3" fill={greenTint} />
+      <rect x="123" y="40" width="74" height="60" rx="3" fill={warmTint} />
+      <rect x="224" y="40" width="74" height="60" rx="3" fill={blueTint} />
+      <rect x="22" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="22" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="22" y="130" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="123" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="123" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="123" y="130" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="224" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="224" y="116" width="35" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="224" y="130" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="12" y="160" width="296" height="30" rx="3" fill={accentDim} />
+      <rect x="100" y="171" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="12" y="192" width="296" height="2" rx="1" fill="var(--color-border)" />
+    </svg>
+  );
+}
+
+function MobileCafeWireframe() {
+  return (
+    <svg viewBox="0 0 140 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="140" height="280" rx="6" fill="var(--color-surface)" />
+      <rect x="10" y="12" width="20" height="6" rx="1.5" fill={accent} />
+      <rect x="110" y="12" width="16" height="4" rx="1.5" fill="var(--color-border)" />
+      <rect x="10" y="30" width="120" height="80" rx="3" fill={warmTint} />
+      <rect x="18" y="42" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="52" width="36" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="10" y="120" width="120" height="38" rx="3" fill={accentDim} />
+      <rect x="18" y="126" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="134" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="18" y="144" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="10" y="166" width="120" height="38" rx="3" fill={accentDim} />
+      <rect x="18" y="172" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="180" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="18" y="190" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="10" y="212" width="120" height="38" rx="3" fill={accentDim} />
+      <rect x="18" y="218" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="226" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="18" y="236" width="50" height="6" rx="2" fill={accentMuted} />
+      <rect x="10" y="260" width="120" height="2" rx="1" fill="var(--color-border)" />
+      <rect x="25" y="268" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="50" y="268" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="78" y="268" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="105" y="268" width="12" height="4" rx="1.5" fill={accent} />
+    </svg>
+  );
+}
+
+function MobileServiceWireframe() {
+  return (
+    <svg viewBox="0 0 140 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="140" height="280" rx="6" fill="var(--color-surface)" />
+      <rect x="10" y="12" width="20" height="6" rx="1.5" fill="var(--color-text-secondary)" />
+      <rect x="100" y="10" width="28" height="10" rx="3" fill={accentMuted} />
+      <rect x="10" y="30" width="120" height="60" rx="3" fill={blueTint} />
+      <rect x="20" y="42" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="52" width="80" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="10" y="100" width="120" height="30" rx="3" fill={accentDim} />
+      <rect x="18" y="108" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="116" width="80" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="10" y="138" width="120" height="30" rx="3" fill={accentDim} />
+      <rect x="18" y="146" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="154" width="80" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="10" y="176" width="120" height="30" rx="3" fill={accentDim} />
+      <rect x="18" y="184" width="50" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="18" y="192" width="80" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="30" y="220" width="80" height="14" rx="4" fill={accentMuted} />
+      <rect x="10" y="248" width="120" height="2" rx="1" fill="var(--color-border)" />
+      <rect x="25" y="256" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="50" y="256" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="78" y="256" width="12" height="4" rx="1.5" fill={accent} />
+      <rect x="105" y="256" width="12" height="4" rx="1.5" fill={accent} />
+    </svg>
+  );
+}
+
+function EventWireframe() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" rx="3" fill="var(--color-surface)" />
+      <rect x="12" y="10" width="50" height="4" rx="2" fill={purpleTint} />
+      <rect x="240" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="276" y="10" width="28" height="4" rx="2" fill="var(--color-border)" />
+      <rect x="12" y="26" width="296" height="48" rx="3" fill={purpleTint} />
+      <rect x="100" y="38" width="120" height="5" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="110" y="48" width="90" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="12" y="86" width="94" height="80" rx="3" fill={accentDim} />
+      <rect x="113" y="86" width="94" height="80" rx="3" fill={accentDim} />
+      <rect x="214" y="86" width="94" height="80" rx="3" fill={accentDim} />
+      <rect x="20" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="20" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="20" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="20" y="140" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="121" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="121" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="121" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="121" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="121" y="140" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="222" y="94" width="36" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="222" y="102" width="28" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="222" y="112" width="60" height="4" rx="2" fill="var(--color-text-secondary)" />
+      <rect x="222" y="120" width="40" height="3" rx="1.5" fill="var(--color-border)" />
+      <rect x="222" y="140" width="60" height="6" rx="2" fill={accentMuted} />
+      <rect x="12" y="178" width="296" height="2" rx="1" fill="var(--color-border)" />
+    </svg>
+  );
+}
+
+const wireframes = [
+  { id: "cafe", business: "Ridgeview Bistro", type: "desktop" as const, render: CafeWireframe },
+  { id: "service", business: "Pisgah Home Services", type: "desktop" as const, render: ServiceWireframe },
+  { id: "retail", business: "Brevard Provisions Co.", type: "desktop" as const, render: RetailWireframe },
+  { id: "event", business: "Transylvania Arts Guild", type: "desktop" as const, render: EventWireframe },
+  { id: "mobile-cafe", business: "Riverwalk Cafe", type: "mobile" as const, render: MobileCafeWireframe },
+  { id: "mobile-service", business: "Appalachian Repair", type: "mobile" as const, render: MobileServiceWireframe },
+];
+
+const businessNames = [
+  "Cafes & Coffee Shops",
+  "Restaurants",
+  "Breweries & Taprooms",
+  "Bakeries",
+  "Retail Stores",
+  "Salons & Spas",
+  "Contractors & Trades",
+  "Artists & Galleries",
+  "Outdoor Guides",
+  "Real Estate",
+  "Medical & Wellness",
+  "Churches & Non-Profits",
+  "Bike Shops",
+  "Bed & Breakfasts",
+  "Wineries & Vineyards",
+  "Fitness & Yoga",
+  "Pet Services",
+  "Food Trucks & Catering",
+  "Antique & Vintage Shops",
+  "Photography & Media",
+  "Florists & Garden Centers",
+  "Bookstores",
+  "Music & Entertainment",
+  "Auto Repair & Detailing",
+  "Landscaping & Lawn Care",
+  "Cleaning Services",
+  "Massage & Holistic Health",
+  "Childcare & Daycares",
+  "Tutoring & Music Lessons",
+  "Event Planning",
+  "Distilleries & Cideries",
+  "Hardware & Supply Stores",
+  "Soap & Candle Makers",
+  "Pottery & Ceramics Studios",
+  "Leatherworkers & Saddlers",
+  "Luthiers & Instrument Makers",
+  "Fly Fishing Guides",
+  "Gem Mining & Prospecting",
+  "Blacksmiths & Metal Forging",
+  "Wool & Fiber Arts",
+  "Apiaries & Honey Farms",
+  "Mushroom Farms & Foraging",
+  "Axe Throwing Venues",
+  "Stained Glass Studios",
+  "Chainsaw Carving",
+  "Mobile Saunas",
+  "Fermentation Shops",
 ];
 
 const testimonials = [
@@ -205,6 +390,12 @@ export default function Home() {
   const [mobileEditField, setMobileEditField] = useState<string | null>(null);
   const [mobileEditValue, setMobileEditValue] = useState("");
   const [mobileEditorFocused, setMobileEditorFocused] = useState(false);
+  const [businessRefreshKey, setBusinessRefreshKey] = useState(0);
+  const [businessSpinning, setBusinessSpinning] = useState(false);
+  const [problemQuoteIdx, setProblemQuoteIdx] = useState(0);
+  const [problemQuoteFading, setProblemQuoteFading] = useState(false);
+  const [wireframeIdx, setWireframeIdx] = useState(0);
+  const [wireframeFading, setWireframeFading] = useState(false);
 
   const headlineRef = useRef<HTMLInputElement>(null);
   const taglineRef = useRef<HTMLInputElement>(null);
@@ -212,6 +403,36 @@ export default function Home() {
   const aboutRef = useRef<HTMLTextAreaElement>(null);
   const hoursRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
+
+  const businesses = useMemo(() => {
+    const shuffled = [...businessNames].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 12).map((name) => ({
+      name,
+      color: palette[Math.floor(Math.random() * palette.length)],
+    }));
+  }, [businessRefreshKey]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProblemQuoteFading(true);
+      setTimeout(() => {
+        setProblemQuoteIdx((i) => (i + 1) % problemQuotes.length);
+        setProblemQuoteFading(false);
+      }, 300);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWireframeFading(true);
+      setTimeout(() => {
+        setWireframeIdx((i) => (i + 1) % wireframes.length);
+        setWireframeFading(false);
+      }, 300);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   const presets: Record<string, {
     headline: string; tagline: string; cta: string; about: string; hours: string; phone: string; brand: string; url: string
@@ -374,39 +595,63 @@ export default function Home() {
       <Section id="problem">
         <h2 className="section-title">If this sounds familiar&hellip;</h2>
         <p className="section-sub">
-          You know your website needs help, but every time you look into it, it
-          feels like a hassle or a sales pitch.
+          Every time you look into fixing your website, it feels like a
+          hassle — or worse, a sales pitch.
         </p>
-        <div className="problem-grid">
-          {problems.map((p) => {
-            const icon = problemIcons[p.icon as keyof typeof problemIcons];
-            return (
-              <div key={p.title} className="problem-card">
-                <div className="problem-icon">{icon}</div>
-                <div className="problem-body">
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
+        <blockquote className={`problem-quote${problemQuoteFading ? " fade-out" : ""}`}>
+          &ldquo;{problemQuotes[problemQuoteIdx]}&rdquo;
+        </blockquote>
+      </Section>
+
+      {/* Which businesses? */}
+      <Section id="businesses">
+        <h2 className="section-title">Which businesses?</h2>
+        <p className="section-sub">
+          From Main Street cafes to mountain guide services — if you serve
+          customers in WNC, I can build a site that fits your business.
+        </p>
+        <div className="business-toolbar">
+          <button className="business-refresh" onClick={() => {
+            setBusinessSpinning(true);
+            setBusinessRefreshKey((k) => k + 1);
+            setTimeout(() => setBusinessSpinning(false), 600);
+          }}>
+            <span className={`business-refresh-icon${businessSpinning ? " spin" : ""}`}>↻</span> Refresh
+          </button>
+        </div>
+        <div className="business-masonry">
+          {businesses.map((b: { name: string; color: string }) => {
+              const isCool = b.color === "#7c3aed" || b.color === "#2563eb";
+              return (
+                <div key={b.name} className="business-item" data-cool={isCool ? "" : undefined} style={{ "--business-color": b.color } as React.CSSProperties}>
+                  {b.name}
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </Section>
 
-      {/* Services */}
+      {/* What I build — wireframe showcase */}
       <Section id="services">
         <h2 className="section-title">What I build</h2>
         <p className="section-sub">
-          I work with all kinds of local businesses. If you serve customers in
-          WNC, I can build you a site that does what you need.
+          I work with all kinds of local businesses. Here are some of the
+          website layouts I create.
         </p>
-        <div className="service-grid">
-          {services.map((s) => (
-            <div key={s.title} className="service-card">
-              <h3>{s.title}</h3>
-              <p className="service-desc">{s.desc}</p>
-            </div>
-          ))}
+        <div className="wireframe-showcase">
+          {(() => {
+            const w = wireframes[wireframeIdx];
+            const Frame = w.render;
+            return (
+              <div
+                className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
+              >
+                <div className={`wireframe-frame wireframe--${w.type}`}>
+                  <Frame />
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </Section>
 
@@ -474,6 +719,7 @@ export default function Home() {
                   <path d="M2 8L6 14L10 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
+              <span className="cms-mobile-arrow-text">tap to edit</span>
             </div>
           )}
 
