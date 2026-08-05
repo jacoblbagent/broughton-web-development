@@ -560,10 +560,15 @@ export default function Home() {
 
   const businesses = useMemo(() => {
     const shuffled = [...businessNames].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 12).map((name) => ({
-      name,
-      color: palette[Math.floor(Math.random() * palette.length)],
-    }));
+    let lastColor = '';
+    return shuffled.slice(0, 12).map((name) => {
+      let color;
+      do {
+        color = palette[Math.floor(Math.random() * palette.length)];
+      } while (color === lastColor);
+      lastColor = color;
+      return { name, color };
+    });
   }, [businessRefreshKey]);
 
   useEffect(() => {
