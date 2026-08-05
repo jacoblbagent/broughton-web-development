@@ -799,31 +799,28 @@ export default function Home() {
         </p>
         <div className="wireframe-showcase">
           {(() => {
-            const N = wireframes.length;
-            const slots = [
-              { offset: (centerIdx - 1 + N) % N, x: -80, r: -5, z: 1 },
-              { offset: centerIdx, x: 0, r: 0, z: 3 },
-              { offset: (centerIdx + 1) % N, x: 80, r: 5, z: 2 },
-            ];
-            return slots.map((slot) => {
-              const w = wireframes[slot.offset];
-              const Frame = w.render;
-              return (
-                <div
-                  key={slot.offset}
-                  className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
-                  style={{
-                    zIndex: slot.z,
-                    transform: `translateX(calc(-50% + ${slot.x}px)) translateY(-50%) rotate(${slot.r}deg)`,
-                  }}
-                >
-                  <div className="wireframe-frame">
-                    <Frame />
-                  </div>
+            const Frame = wireframes[centerIdx].render;
+            return (
+              <div
+                key={centerIdx}
+                className={`wireframe-card${wireframeFading ? " fade-out" : ""}`}
+              >
+                <div className="wireframe-frame">
+                  <Frame />
                 </div>
-              );
-            });
+              </div>
+            );
           })()}
+          <div className="wireframe-dots">
+            {wireframes.map((_, i) => (
+              <button
+                key={i}
+                className={`wireframe-dot${i === centerIdx ? " active" : ""}`}
+                onClick={() => { setCenterIdx(i); setWireframeFading(false); }}
+                aria-label={`Show ${wireframes[i].id} layout`}
+              />
+            ))}
+          </div>
         </div>
       </Section>
 
